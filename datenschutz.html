@@ -5,26 +5,167 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Datenschutzerklärung - Cruising App</title>
     <style>
-        body { font-family: sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; }
-        h1 { border-bottom: 2px solid #eee; padding-bottom: 10px; }
-        a { color: #007bff; text-decoration: none; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #b71c1c; /* Dunkelrot passend zur App */
+            text-align: center;
+            border-bottom: 2px solid #b71c1c;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-top: 30px;
+            font-size: 1.4em;
+            border-left: 5px solid #b71c1c;
+            padding-left: 10px;
+        }
+        h3 {
+            color: #455a64;
+            font-size: 1.1em;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        ul {
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        .info-box {
+            background-color: #e3f2fd;
+            border: 1px solid #90caf9;
+            color: #0d47a1;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #777;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+        a { color: #b71c1c; text-decoration: none; }
+        a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
-    <p><a href="index.html">&larr; Zurück zur Startseite</a></p>
-    
+
+<div class="container">
     <h1>Datenschutzerklärung</h1>
-    <p>Stand: 15.12.2025</p>
+    <p><strong>Stand:</strong> 15. Dezember 2025</p>
+
+    <p>Wir freuen uns über Ihr Interesse an unserer App "Cruising". Der Schutz Ihrer Privatsphäre ist für uns sehr wichtig. Nachstehend informieren wir Sie ausführlich über den Umgang mit Ihren Daten.</p>
 
     <h2>1. Verantwortlicher</h2>
-    <p>Verantwortlich für die Datenverarbeitung ist:<br>
-    [Tomes Leander Schuch]<br>
-    [Poststraße 38]<br>
-    [38440 Wolfsburg]<br>
-    E-Mail: support@cruising-app.de</p>
+    <p>Verantwortlicher für die Datenverarbeitung im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:</p>
+    <p>
+        Tomes Leander Schuch<br>
+        Poststraße 38<br>
+        38440 Wolfsburg<br>
+        E-Mail: support@cruising-app.de
+    </p>
 
-    <h2>2. Erhebung von Daten</h2>
-    <p>Wir erheben personenbezogene Daten, wenn Sie unsere App nutzen...</p>
+    <h2>2. Welche Daten wir erfassen</h2>
+    <p>Um die Funktionen der App bereitzustellen, verarbeiten wir folgende Kategorien von Daten:</p>
     
-    </body>
+    <h3>a) Benutzerkonto-Daten</h3>
+    <p>Wenn Sie sich registrieren, speichern wir Ihre E-Mail-Adresse, einen gewählten Benutzernamen (Display Name) und Ihre interne User-ID.</p>
+
+    <h3>b) Fahrzeuginformationen (Virtuelle Garage)</h3>
+    <p>Wir speichern Informationen zu den Fahrzeugen, die Sie in der App anlegen (Modell, Name des Autos). Diese Daten dienen der persönlichen Statistik und der Anzeige in Bestenlisten.</p>
+
+    <h3>c) Nutzergenerierte Inhalte</h3>
+    <p>Daten, die Sie aktiv erstellen, wie z.B. Routen (Streckenverläufe), Kommentare, Freundschaftsanfragen und Report-Meldungen.</p>
+
+    <div class="info-box">
+        <h3>3. Standortdaten & GPS (Kernfunktion)</h3>
+        <p>Die Hauptfunktion der App ist das Aufzeichnen von Fahrten. Hierfür greifen wir auf die GPS-Sensoren Ihres Gerätes zu.</p>
+        <p><strong>Was wird erfasst?</strong> Breitengrad, Längengrad, Höhe, Geschwindigkeit, Kurs und Zeitstempel.</p>
+        <p><strong>Wann wird erfasst?</strong> Die Erfassung erfolgt nur, wenn Sie aktiv eine Fahrt aufzeichnen ("Fahrt starten").</p>
+        <p><strong>Wofür?</strong> Um Ihre Fahrzeit zu messen, Checkpoints zu verifizieren, Geschwindigkeitsdiagramme zu erstellen und die Strecke auf der Karte darzustellen.</p>
+    </div>
+
+    <h2>4. Nutzung von Google Firebase</h2>
+    <p>Wir nutzen für das Hosting unserer Datenbank und die Authentifizierung der Nutzer Dienste von <strong>Google Firebase</strong> (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland).</p>
+    
+    <h3>a) Firebase Authentication</h3>
+    <p>Dient der sicheren Anmeldung und Verwaltung Ihres Kontos. Hierbei werden Authentifizierungs-Token verarbeitet.</p>
+
+    <h3>b) Cloud Firestore</h3>
+    <p>Dies ist unsere Datenbank, in der Ihr Profil, Ihre Routen und Zeiten gespeichert werden. Die Daten werden in der Cloud (Serverstandort bevorzugt EU/Frankfurt, kann technisch bedingt aber international verteilt sein) gespeichert.</p>
+
+    <h3>c) Google Maps Platform</h3>
+    <p>Um Ihnen Kartenmaterial anzuzeigen, Routen darzustellen und Adressen zu finden, nutzen wir die <strong>Google Maps API</strong>. Durch die Nutzung von Google Maps können Informationen über Ihre Benutzung dieser App (einschließlich Ihrer IP-Adresse und Standortdaten) an einen Server von Google in den USA übertragen und dort gespeichert werden.</p>
+    <p>Die Nutzung von Google Maps erfolgt im Interesse einer ansprechenden Darstellung unserer App und an einer leichten Auffindbarkeit der von uns angegebenen Orte. Dies stellt ein berechtigtes Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO dar.</p>
+    
+    <p>Weitere Informationen zum Datenschutz bei Google Firebase finden Sie hier: <a href="https://firebase.google.com/support/privacy" target="_blank">https://firebase.google.com/support/privacy</a></p>
+
+    <h2>5. Sichtbarkeit Ihrer Daten (Privatsphäre-Einstellungen)</h2>
+    <p>Sie haben die Kontrolle darüber, wer Ihre Fahrdaten sieht. Die App bietet für jede Fahrt folgende Einstellungen:</p>
+    <ul>
+        <li><strong>Öffentlich:</strong> Die Fahrtzeit und das Fahrzeugmodell sind für alle Nutzer in der globalen Bestenliste sichtbar.</li>
+        <li><strong>Freunde:</strong> Nur Nutzer, die Sie als Freund hinzugefügt haben, können Ihre Ergebnisse sehen.</li>
+        <li><strong>Privat:</strong> Nur Sie selbst können diese Fahrt in Ihrem Verlauf sehen.</li>
+    </ul>
+    <p>Ihr Benutzername und Ihre erstellten öffentlichen Routen sind für andere Nutzer sichtbar, um die Community-Funktionen zu ermöglichen.</p>
+
+    <h2>6. Rechtsgrundlage der Verarbeitung</h2>
+    <p>Die Verarbeitung Ihrer Daten erfolgt auf Grundlage von <strong>Art. 6 Abs. 1 lit. b DSGVO</strong> (Vertragserfüllung), da die App ohne diese Datenverarbeitung (z.B. Speicherung der Zeiten für die Bestenliste) nicht funktionieren würde.</p>
+
+    <h2>7. Weitergabe von Daten</h2>
+    <p>Eine Weitergabe Ihrer personenbezogenen Daten an Dritte findet grundsätzlich nicht statt, außer:</p>
+    <ul>
+        <li>Wenn dies zur Bereitstellung der IT-Infrastruktur notwendig ist (siehe § 4 Google Firebase).</li>
+        <li>Wenn wir gesetzlich dazu verpflichtet sind (z.B. bei behördlichen Anfragen im Rahmen von Ermittlungen zu Straftaten).</li>
+    </ul>
+
+    <h2>8. Speicherdauer</h2>
+    <p>Wir speichern Ihre Daten so lange, wie Ihr Benutzerkonto besteht. Sie können einzelne Fahrten oder Routen jederzeit in der App löschen; diese werden dann unverzüglich aus der Datenbank entfernt.</p>
+    <p>Wenn Sie Ihr Konto löschen ("Account löschen" in den Einstellungen), werden alle Ihre personenbezogenen Daten (Profil, Freunde, private Fahrten) unwiderruflich gelöscht. Öffentliche Routen bleiben ggf. unter dem Namen "Anonym" erhalten, um die Integrität der Datenbank für andere Nutzer zu wahren.</p>
+
+    <h2>9. Ihre Rechte</h2>
+    <p>Sie haben nach der DSGVO folgende Rechte hinsichtlich Ihrer Daten:</p>
+    <ul>
+        <li><strong>Auskunft:</strong> Sie können jederzeit Informationen über Ihre gespeicherten Daten anfordern.</li>
+        <li><strong>Berichtigung:</strong> Sie können falsche Daten in Ihrem Profil korrigieren.</li>
+        <li><strong>Löschung:</strong> Sie können die Löschung Ihres Kontos und aller Daten verlangen.</li>
+        <li><strong>Widerruf:</strong> Sie können erteilte Einwilligungen (z.B. GPS-Zugriff) in den Geräteeinstellungen jederzeit widerrufen (die App ist dann jedoch nur eingeschränkt nutzbar).</li>
+    </ul>
+
+    <h2>10. Datensicherheit</h2>
+    <p>Wir verwenden moderne Verschlüsselungstechnologien (SSL/TLS) für die Datenübertragung zwischen Ihrem Gerät und unseren Servern. Der Zugriff auf die Datenbank ist durch Sicherheitsregeln (Security Rules) geschützt, die sicherstellen, dass nur berechtigte Nutzer Zugriff auf bestimmte Daten haben.</p>
+
+    <h2>11. Kontakt</h2>
+    <p>Bei Fragen zum Datenschutz wenden Sie sich bitte an:</p>
+    <p>support@cruising-app.de</p>
+
+    <div class="footer">
+        <p>&copy; 2025 Cruising App Development.</p>
+    </div>
+</div>
+
+</body>
 </html>
