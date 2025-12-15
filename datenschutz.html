@@ -5,68 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Datenschutzerklärung - Cruising App</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f9f9f9;
-        }
-        .container {
-            background-color: #ffffff;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #b71c1c; /* Dunkelrot passend zur App */
-            text-align: center;
-            border-bottom: 2px solid #b71c1c;
-            padding-bottom: 10px;
-            margin-bottom: 30px;
-        }
-        h2 {
-            color: #2c3e50;
-            margin-top: 30px;
-            font-size: 1.4em;
-            border-left: 5px solid #b71c1c;
-            padding-left: 10px;
-        }
-        h3 {
-            color: #455a64;
-            font-size: 1.1em;
-            margin-top: 20px;
-            font-weight: bold;
-        }
-        p {
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-        ul {
-            margin-bottom: 15px;
-            padding-left: 20px;
-        }
-        li {
-            margin-bottom: 5px;
-        }
-        .info-box {
-            background-color: #e3f2fd;
-            border: 1px solid #90caf9;
-            color: #0d47a1;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 20px 0;
-        }
-        .footer {
-            margin-top: 50px;
-            text-align: center;
-            font-size: 0.9em;
-            color: #777;
-            border-top: 1px solid #ddd;
-            padding-top: 20px;
-        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; }
+        .container { background-color: #ffffff; padding: 40px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { color: #b71c1c; text-align: center; border-bottom: 2px solid #b71c1c; padding-bottom: 10px; margin-bottom: 30px; }
+        h2 { color: #2c3e50; margin-top: 30px; font-size: 1.4em; border-left: 5px solid #b71c1c; padding-left: 10px; }
+        h3 { color: #455a64; font-size: 1.1em; margin-top: 20px; font-weight: bold; }
+        p { margin-bottom: 15px; text-align: justify; }
+        ul { margin-bottom: 15px; padding-left: 20px; }
+        li { margin-bottom: 5px; }
+        .info-box { background-color: #e3f2fd; border: 1px solid #90caf9; color: #0d47a1; padding: 15px; border-radius: 5px; margin: 20px 0; }
+        .footer { margin-top: 50px; text-align: center; font-size: 0.9em; color: #777; border-top: 1px solid #ddd; padding-top: 20px; }
         a { color: #b71c1c; text-decoration: none; }
         a:hover { text-decoration: underline; }
     </style>
@@ -92,13 +40,19 @@
     <p>Um die Funktionen der App bereitzustellen, verarbeiten wir folgende Kategorien von Daten:</p>
     
     <h3>a) Benutzerkonto-Daten</h3>
-    <p>Wenn Sie sich registrieren, speichern wir Ihre E-Mail-Adresse, einen gewählten Benutzernamen (Display Name) und Ihre interne User-ID.</p>
+    <p>Wenn Sie sich registrieren, speichern wir Ihre E-Mail-Adresse, einen gewählten Benutzernamen (Display Name), Ihr Profilbild und Ihre interne User-ID.</p>
 
     <h3>b) Fahrzeuginformationen (Virtuelle Garage)</h3>
-    <p>Wir speichern Informationen zu den Fahrzeugen, die Sie in der App anlegen (Modell, Name des Autos). Diese Daten dienen der persönlichen Statistik und der Anzeige in Bestenlisten.</p>
+    <p>Wir speichern Informationen zu den Fahrzeugen, die Sie in der App anlegen (Modell, Leistung, Baujahr, Antriebsart, Fotos). Diese Daten dienen der persönlichen Statistik und werden anderen Nutzern in Ihrem Profil angezeigt, sofern Sie dies nicht eingeschränkt haben.</p>
 
-    <h3>c) Nutzergenerierte Inhalte</h3>
-    <p>Daten, die Sie aktiv erstellen, wie z.B. Routen (Streckenverläufe), Kommentare, Freundschaftsanfragen und Report-Meldungen.</p>
+    <h3>c) Nutzergenerierte Inhalte & Community</h3>
+    <p>Daten, die Sie aktiv erstellen:</p>
+    <ul>
+        <li>Erstellte Routen und Streckenverläufe.</li>
+        <li>Freundschaftsanfragen und Freundeslisten.</li>
+        <li>Kommentare und Bewertungen zu Routen.</li>
+        <li>Meldungen (Reports) über andere Nutzer oder Inhalte.</li>
+    </ul>
 
     <div class="info-box">
         <h3>3. Standortdaten & GPS (Kernfunktion)</h3>
@@ -108,59 +62,47 @@
         <p><strong>Wofür?</strong> Um Ihre Fahrzeit zu messen, Checkpoints zu verifizieren, Geschwindigkeitsdiagramme zu erstellen und die Strecke auf der Karte darzustellen.</p>
     </div>
 
-    <h2>4. Nutzung von Google Firebase</h2>
-    <p>Wir nutzen für das Hosting unserer Datenbank und die Authentifizierung der Nutzer Dienste von <strong>Google Firebase</strong> (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland).</p>
+    <h2>4. Nutzung von Google Firebase & Google Maps</h2>
+    <p>Wir nutzen Dienste von Google (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland).</p>
     
     <h3>a) Firebase Authentication</h3>
-    <p>Dient der sicheren Anmeldung und Verwaltung Ihres Kontos. Hierbei werden Authentifizierungs-Token verarbeitet.</p>
+    <p>Dient der sicheren Anmeldung. Hierbei werden Authentifizierungs-Token verarbeitet.</p>
 
     <h3>b) Cloud Firestore</h3>
-    <p>Dies ist unsere Datenbank, in der Ihr Profil, Ihre Routen und Zeiten gespeichert werden. Die Daten werden in der Cloud (Serverstandort bevorzugt EU/Frankfurt, kann technisch bedingt aber international verteilt sein) gespeichert.</p>
+    <p>Unsere Datenbank speichert Ihr Profil, Ihre Garage, Routen und Zeiten. Die Daten liegen bevorzugt auf Servern in der EU (z.B. Frankfurt), können technisch bedingt aber im Rahmen der Google Cloud Infrastruktur international verteilt sein.</p>
 
     <h3>c) Google Maps Platform</h3>
-    <p>Um Ihnen Kartenmaterial anzuzeigen, Routen darzustellen und Adressen zu finden, nutzen wir die <strong>Google Maps API</strong>. Durch die Nutzung von Google Maps können Informationen über Ihre Benutzung dieser App (einschließlich Ihrer IP-Adresse und Standortdaten) an einen Server von Google in den USA übertragen und dort gespeichert werden.</p>
-    <p>Die Nutzung von Google Maps erfolgt im Interesse einer ansprechenden Darstellung unserer App und an einer leichten Auffindbarkeit der von uns angegebenen Orte. Dies stellt ein berechtigtes Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO dar.</p>
+    <p>Zur Darstellung von Karten nutzen wir die Google Maps API. Hierbei werden technisch bedingt IP-Adresse und Standortdaten an Google-Server übertragen, um das Kartenmaterial zu laden.</p>
     
-    <p>Weitere Informationen zum Datenschutz bei Google Firebase finden Sie hier: <a href="https://firebase.google.com/support/privacy" target="_blank">https://firebase.google.com/support/privacy</a></p>
+    <p>Datenschutzerklärung von Google: <a href="https://firebase.google.com/support/privacy" target="_blank">https://firebase.google.com/support/privacy</a></p>
 
-    <h2>5. Sichtbarkeit Ihrer Daten (Privatsphäre-Einstellungen)</h2>
-    <p>Sie haben die Kontrolle darüber, wer Ihre Fahrdaten sieht. Die App bietet für jede Fahrt folgende Einstellungen:</p>
+    <h2>5. Sichtbarkeit Ihrer Daten</h2>
+    <p>Sie kontrollieren, wer Ihre Daten sieht:</p>
     <ul>
-        <li><strong>Öffentlich:</strong> Die Fahrtzeit und das Fahrzeugmodell sind für alle Nutzer in der globalen Bestenliste sichtbar.</li>
-        <li><strong>Freunde:</strong> Nur Nutzer, die Sie als Freund hinzugefügt haben, können Ihre Ergebnisse sehen.</li>
-        <li><strong>Privat:</strong> Nur Sie selbst können diese Fahrt in Ihrem Verlauf sehen.</li>
+        <li><strong>Profil & Garage:</strong> Standardmäßig für andere Nutzer sichtbar. Sie können die Sichtbarkeit in den Einstellungen auf "Freunde" oder "Privat" beschränken.</li>
+        <li><strong>Fahrtzeiten:</strong> Können pro Fahrt als Öffentlich, Freunde oder Privat markiert werden.</li>
+        <li><strong>Freunde:</strong> Wenn Sie eine Freundschaftsanfrage annehmen, erhält der andere Nutzer Zugriff auf Ihre für "Freunde" freigegebenen Inhalte.</li>
     </ul>
-    <p>Ihr Benutzername und Ihre erstellten öffentlichen Routen sind für andere Nutzer sichtbar, um die Community-Funktionen zu ermöglichen.</p>
 
-    <h2>6. Rechtsgrundlage der Verarbeitung</h2>
-    <p>Die Verarbeitung Ihrer Daten erfolgt auf Grundlage von <strong>Art. 6 Abs. 1 lit. b DSGVO</strong> (Vertragserfüllung), da die App ohne diese Datenverarbeitung (z.B. Speicherung der Zeiten für die Bestenliste) nicht funktionieren würde.</p>
+    <h2>6. Rechtsgrundlage</h2>
+    <p>Die Verarbeitung erfolgt gemäß <strong>Art. 6 Abs. 1 lit. b DSGVO</strong> (Vertragserfüllung zur Bereitstellung der App-Funktionen) sowie <strong>Art. 6 Abs. 1 lit. f DSGVO</strong> (Berechtigtes Interesse an der Sicherheitsüberprüfung und Community-Funktionen).</p>
 
     <h2>7. Weitergabe von Daten</h2>
-    <p>Eine Weitergabe Ihrer personenbezogenen Daten an Dritte findet grundsätzlich nicht statt, außer:</p>
-    <ul>
-        <li>Wenn dies zur Bereitstellung der IT-Infrastruktur notwendig ist (siehe § 4 Google Firebase).</li>
-        <li>Wenn wir gesetzlich dazu verpflichtet sind (z.B. bei behördlichen Anfragen im Rahmen von Ermittlungen zu Straftaten).</li>
-    </ul>
+    <p>Eine Weitergabe an Dritte findet nur statt, wenn dies technisch notwendig ist (Google Firebase/Maps) oder wir gesetzlich dazu verpflichtet sind (z.B. Strafverfolgung).</p>
 
-    <h2>8. Speicherdauer</h2>
-    <p>Wir speichern Ihre Daten so lange, wie Ihr Benutzerkonto besteht. Sie können einzelne Fahrten oder Routen jederzeit in der App löschen; diese werden dann unverzüglich aus der Datenbank entfernt.</p>
-    <p>Wenn Sie Ihr Konto löschen ("Account löschen" in den Einstellungen), werden alle Ihre personenbezogenen Daten (Profil, Freunde, private Fahrten) unwiderruflich gelöscht. Öffentliche Routen bleiben ggf. unter dem Namen "Anonym" erhalten, um die Integrität der Datenbank für andere Nutzer zu wahren.</p>
+    <h2>8. Löschung und Archivierung (WICHTIG)</h2>
+    <p>Sie können Ihr Konto jederzeit in den Einstellungen löschen ("Konto löschen").</p>
+    <ul>
+        <li><strong>Sofortige Wirkung:</strong> Ihr öffentliches Profil verschwindet sofort. Ihre aktiven Daten (Freundeslisten, Token) werden gelöscht.</li>
+        <li><strong>Archivierung zur Sicherheit:</strong> Um Missbrauch (z.B. Beleidigungen, illegale Inhalte, Umgehung von Sperren) vorzubeugen und rechtliche Ansprüche zu klären, werden Ihre Profildaten nach der Löschung in ein gesichertes Archiv verschoben.</li>
+        <li><strong>Endgültige Löschung:</strong> Daten im Archiv werden gelöscht, sobald sie für Zwecke der Beweissicherung nicht mehr erforderlich sind (in der Regel entsprechend der gesetzlichen Verjährungsfristen).</li>
+    </ul>
 
     <h2>9. Ihre Rechte</h2>
-    <p>Sie haben nach der DSGVO folgende Rechte hinsichtlich Ihrer Daten:</p>
-    <ul>
-        <li><strong>Auskunft:</strong> Sie können jederzeit Informationen über Ihre gespeicherten Daten anfordern.</li>
-        <li><strong>Berichtigung:</strong> Sie können falsche Daten in Ihrem Profil korrigieren.</li>
-        <li><strong>Löschung:</strong> Sie können die Löschung Ihres Kontos und aller Daten verlangen.</li>
-        <li><strong>Widerruf:</strong> Sie können erteilte Einwilligungen (z.B. GPS-Zugriff) in den Geräteeinstellungen jederzeit widerrufen (die App ist dann jedoch nur eingeschränkt nutzbar).</li>
-    </ul>
+    <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung (soweit keine Aufbewahrungspflicht besteht) und Einschränkung der Verarbeitung Ihrer Daten.</p>
 
-    <h2>10. Datensicherheit</h2>
-    <p>Wir verwenden moderne Verschlüsselungstechnologien (SSL/TLS) für die Datenübertragung zwischen Ihrem Gerät und unseren Servern. Der Zugriff auf die Datenbank ist durch Sicherheitsregeln (Security Rules) geschützt, die sicherstellen, dass nur berechtigte Nutzer Zugriff auf bestimmte Daten haben.</p>
-
-    <h2>11. Kontakt</h2>
-    <p>Bei Fragen zum Datenschutz wenden Sie sich bitte an:</p>
-    <p>support@cruising-app.de</p>
+    <h2>10. Kontakt</h2>
+    <p>Bei Fragen zum Datenschutz: support@cruising-app.de</p>
 
     <div class="footer">
         <p>&copy; 2025 Cruising App Development.</p>
