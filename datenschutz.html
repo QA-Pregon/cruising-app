@@ -23,7 +23,7 @@
 
 <div class="container">
     <h1>Datenschutzerklärung</h1>
-    <p><strong>Stand:</strong> 15. Dezember 2025</p>
+    <p><strong>Stand:</strong> 03. März 2026</p>
 
     <p>Wir freuen uns über Ihr Interesse an unserer App "Cruising". Der Schutz Ihrer Privatsphäre ist für uns sehr wichtig. Nachstehend informieren wir Sie ausführlich über den Umgang mit Ihren Daten.</p>
 
@@ -58,54 +58,55 @@
         <h3>3. Standortdaten & GPS (Kernfunktion)</h3>
         <p>Die Hauptfunktion der App ist das Aufzeichnen von Fahrten. Hierfür greifen wir auf die GPS-Sensoren Ihres Gerätes zu.</p>
         <p><strong>Was wird erfasst?</strong> Breitengrad, Längengrad, Höhe, Geschwindigkeit, Kurs und Zeitstempel.</p>
-        <p><strong>Wann wird erfasst?</strong> Die Erfassung erfolgt nur, wenn Sie aktiv eine Fahrt aufzeichnen ("Fahrt starten").</p>
-        <p><strong>Wofür?</strong> Um Ihre Fahrzeit zu messen, Checkpoints zu verifizieren, Geschwindigkeitsdiagramme zu erstellen und die Strecke auf der Karte darzustellen.</p>
+        <p><strong>Wann wird erfasst?</strong> Die Erfassung erfolgt nur, wenn Sie aktiv eine Fahrt aufzeichnen ("Fahrt starten") oder Ihre Position auf der Karte zentrieren.</p>
+        <p><strong>Wofür?</strong> Um Ihre Fahrzeit zu messen, Checkpoints zu verifizieren, Geschwindigkeitsdiagramme (Telemetrie) zu erstellen und die Strecke auf der Karte darzustellen.</p>
     </div>
 
-    <h2>4. Nutzung von Google Firebase & Google Maps</h2>
-    <p>Wir nutzen Dienste von Google (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland).</p>
+    <h2>4. Nutzung von Drittanbietern (Firebase & Mapbox)</h2>
+    <p>Um die App bereitzustellen, greifen wir auf Dienste externer Anbieter zurück:</p>
     
-    <h3>a) Firebase Authentication</h3>
-    <p>Dient der sicheren Anmeldung. Hierbei werden Authentifizierungs-Token verarbeitet.</p>
+    <h3>a) Google Firebase (Datenbank & Login)</h3>
+    <p>Wir nutzen Dienste von Google (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland) für die Hintergrund-Infrastruktur:</p>
+    <ul>
+        <li><strong>Firebase Authentication:</strong> Dient der sicheren Anmeldung. Hierbei werden Authentifizierungs-Token und E-Mail-Adressen verarbeitet.</li>
+        <li><strong>Cloud Firestore:</strong> Unsere Datenbank speichert Ihr Profil, Ihre Garage, Routen und Zeiten.</li>
+        <li><strong>Firebase Cloud Storage:</strong> Wird genutzt, um von Ihnen hochgeladene Bilder (Profilbilder, Autofotos) sicher zu speichern.</li>
+    </ul>
+    <p>Die Daten liegen bevorzugt auf Servern in der EU (z.B. Frankfurt), können technisch bedingt aber im Rahmen der Google Cloud Infrastruktur international verteilt sein. Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a></p>
 
-    <h3>b) Cloud Firestore</h3>
-    <p>Unsere Datenbank speichert Ihr Profil, Ihre Garage, Routen und Zeiten. Die Daten liegen bevorzugt auf Servern in der EU (z.B. Frankfurt), können technisch bedingt aber im Rahmen der Google Cloud Infrastruktur international verteilt sein.</p>
-
-    <h3>c) Google Maps Platform</h3>
-    <p>Zur Darstellung von Karten nutzen wir die Google Maps API. Hierbei werden technisch bedingt IP-Adresse und Standortdaten an Google-Server übertragen, um das Kartenmaterial zu laden.</p>
-    
-    <p>Datenschutzerklärung von Google: <a href="https://firebase.google.com/support/privacy" target="_blank">https://firebase.google.com/support/privacy</a></p>
+    <h3>b) Mapbox (Kartenmaterial & Navigation)</h3>
+    <p>Zur visuellen Darstellung der Karten, Routen und für die Navigation nutzen wir die API von Mapbox (Mapbox, Inc., 740 15th Street NW, 5th Floor, Washington DC 20005, USA). Wenn Sie die Karte in der App öffnen, wird eine direkte Verbindung zu den Servern von Mapbox aufgebaut. Hierbei werden technisch bedingt Ihre IP-Adresse sowie Positionsdaten an Mapbox übertragen, um das Kartenmaterial auf Ihr Gerät zu laden. Datenschutzerklärung von Mapbox: <a href="https://www.mapbox.com/legal/privacy" target="_blank">https://www.mapbox.com/legal/privacy</a></p>
 
     <h2>5. Sichtbarkeit Ihrer Daten</h2>
     <p>Sie kontrollieren, wer Ihre Daten sieht:</p>
     <ul>
-        <li><strong>Profil & Garage:</strong> Standardmäßig für andere Nutzer sichtbar. Sie können die Sichtbarkeit in den Einstellungen auf "Freunde" oder "Privat" beschränken.</li>
-        <li><strong>Fahrtzeiten:</strong> Können pro Fahrt als Öffentlich, Freunde oder Privat markiert werden.</li>
+        <li><strong>Profil & Garage:</strong> Standardmäßig für andere Nutzer sichtbar. Sie können diese Daten jederzeit anpassen oder löschen.</li>
+        <li><strong>Fahrtzeiten & Telemetrie:</strong> Können pro Fahrt als "Öffentlich", "Freunde" oder "Privat" markiert werden.</li>
         <li><strong>Freunde:</strong> Wenn Sie eine Freundschaftsanfrage annehmen, erhält der andere Nutzer Zugriff auf Ihre für "Freunde" freigegebenen Inhalte.</li>
     </ul>
 
     <h2>6. Rechtsgrundlage</h2>
-    <p>Die Verarbeitung erfolgt gemäß <strong>Art. 6 Abs. 1 lit. b DSGVO</strong> (Vertragserfüllung zur Bereitstellung der App-Funktionen) sowie <strong>Art. 6 Abs. 1 lit. f DSGVO</strong> (Berechtigtes Interesse an der Sicherheitsüberprüfung und Community-Funktionen).</p>
+    <p>Die Verarbeitung erfolgt gemäß <strong>Art. 6 Abs. 1 lit. b DSGVO</strong> (Vertragserfüllung zur Bereitstellung der App-Funktionen) sowie <strong>Art. 6 Abs. 1 lit. f DSGVO</strong> (Berechtigtes Interesse an der Sicherheitsüberprüfung, Missbrauchsprävention und Community-Funktionen).</p>
 
     <h2>7. Weitergabe von Daten</h2>
-    <p>Eine Weitergabe an Dritte findet nur statt, wenn dies technisch notwendig ist (Google Firebase/Maps) oder wir gesetzlich dazu verpflichtet sind (z.B. Strafverfolgung).</p>
+    <p>Eine Weitergabe an Dritte findet nur statt, wenn dies technisch notwendig ist (Google Firebase / Mapbox) oder wir gesetzlich dazu verpflichtet sind (z.B. Strafverfolgung bei Verdacht auf illegale Rennen nach § 315d StGB).</p>
 
     <h2>8. Löschung und Archivierung (WICHTIG)</h2>
     <p>Sie können Ihr Konto jederzeit in den Einstellungen löschen ("Konto löschen").</p>
     <ul>
         <li><strong>Sofortige Wirkung:</strong> Ihr öffentliches Profil verschwindet sofort. Ihre aktiven Daten (Freundeslisten, Token) werden gelöscht.</li>
-        <li><strong>Archivierung zur Sicherheit:</strong> Um Missbrauch (z.B. Beleidigungen, illegale Inhalte, Umgehung von Sperren) vorzubeugen und rechtliche Ansprüche zu klären, werden Ihre Profildaten nach der Löschung in ein gesichertes Archiv verschoben.</li>
+        <li><strong>Archivierung zur Sicherheit:</strong> Um Missbrauch (z.B. Beleidigungen, illegale Inhalte, Umgehung von Sperren durch Neuregistrierung) vorzubeugen und rechtliche Ansprüche zu klären, werden Ihre Profildaten nach der Löschung in ein gesondertes, nicht-öffentliches Archiv verschoben.</li>
         <li><strong>Endgültige Löschung:</strong> Daten im Archiv werden gelöscht, sobald sie für Zwecke der Beweissicherung nicht mehr erforderlich sind (in der Regel entsprechend der gesetzlichen Verjährungsfristen).</li>
     </ul>
 
     <h2>9. Ihre Rechte</h2>
-    <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung (soweit keine Aufbewahrungspflicht besteht) und Einschränkung der Verarbeitung Ihrer Daten.</p>
+    <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung (soweit keine gesetzliche Aufbewahrungspflicht besteht) und Einschränkung der Verarbeitung Ihrer Daten. Zudem haben Sie das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren.</p>
 
     <h2>10. Kontakt</h2>
-    <p>Bei Fragen zum Datenschutz: support@cruising-app.de</p>
+    <p>Bei Fragen zum Datenschutz wenden Sie sich bitte an: support@cruising-app.de</p>
 
     <div class="footer">
-        <p>&copy; 2025 Cruising App Development.</p>
+        <p>&copy; 2026 Cruising App Development.</p>
     </div>
 </div>
 
