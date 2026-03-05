@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cruising App - Finde deine Route</title>
+    <title>Cruising App - Die Community für Auto-Enthusiasten (Coming Soon)</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
     <style>
-        /* --- CSS VARIABLEN FÜR MODERNEN DARK MODE --- */
+        /* --- CSS VARIABLEN --- */
         :root {
-            --bg-color: #0b0f19; /* Tiefes, edles Dunkelblau/Schwarz */
-            --surface-color: #1a2332; /* Etwas hellere Karten */
+            --bg-color: #0b0f19; 
+            --surface-color: #1a2332; 
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --primary: #00e5ff; /* Das leuchtende Cyan aus der App */
+            --primary: #00e5ff; 
             --primary-dark: #007bff;
             --glow: rgba(0, 229, 255, 0.3);
         }
@@ -29,32 +29,54 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow-x: hidden;
         }
 
         .container { 
             width: 90%; 
-            max-width: 900px; 
+            max-width: 1000px; 
             margin: 0 auto; 
-            padding: 20px 0; 
+            padding: 40px 0; 
         }
+
+        .text-center { text-align: center; }
 
         /* --- HEADER --- */
         header { 
-            padding: 25px 0; 
-            text-align: center; 
-            background: rgba(11, 15, 25, 0.8);
-            backdrop-filter: blur(10px); /* Glassmorphism Effekt */
+            padding: 20px 0; 
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(12px); 
             border-bottom: 1px solid rgba(255,255,255,0.05);
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
         h1 { 
             margin: 0; 
-            font-size: 1.8rem; 
+            font-size: 1.5rem; 
             font-weight: 900;
             letter-spacing: -0.5px;
+            color: var(--text-main);
+        }
+
+        .badge-dev {
+            background: rgba(0, 229, 255, 0.1);
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border: 1px solid rgba(0, 229, 255, 0.3);
         }
 
         /* --- HERO BEREICH --- */
@@ -63,24 +85,24 @@
             padding: 80px 20px 60px; 
         }
 
-        /* Ein cooler Farbverlauf für die Hauptüberschrift */
         .text-gradient {
             background: linear-gradient(90deg, var(--primary), var(--primary-dark));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 3rem;
-            margin-bottom: 15px;
-            line-height: 1.2;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            font-weight: 900;
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             color: var(--text-muted);
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto 40px auto;
         }
 
-        /* --- APP STORE BUTTON --- */
+        /* --- BUTTONS --- */
         .btn { 
             display: inline-block; 
             background: linear-gradient(45deg, var(--primary-dark), var(--primary)); 
@@ -94,35 +116,66 @@
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
         }
         .btn:hover { 
             transform: translateY(-3px);
             box-shadow: 0 15px 35px var(--glow);
         }
 
+        .btn-outline {
+            background: transparent;
+            color: var(--text-main);
+            border: 2px solid rgba(255,255,255,0.2);
+            box-shadow: none;
+            cursor: pointer;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        .btn-outline:hover {
+            border-color: var(--primary);
+            background: rgba(0, 229, 255, 0.05);
+            transform: translateY(-3px);
+        }
+
+        /* --- SEKTIONEN --- */
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            font-weight: 900;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         /* --- FEATURES GRID --- */
-        .features-section {
-            margin-top: 40px;
-        }
-
-        .features-section h3 {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 40px;
-        }
-
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 24px;
         }
 
         .card {
             background: var(--surface-color);
-            padding: 30px;
+            padding: 35px 25px;
             border-radius: 20px;
             border: 1px solid rgba(255,255,255,0.05);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
         
         .card:hover {
@@ -131,13 +184,14 @@
         }
 
         .card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            display: inline-block;
         }
 
         .card h4 {
-            margin: 0 0 10px 0;
-            font-size: 1.2rem;
+            margin: 0 0 12px 0;
+            font-size: 1.3rem;
             color: var(--text-main);
         }
 
@@ -145,16 +199,86 @@
             margin: 0;
             color: var(--text-muted);
             font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* --- HOW IT WORKS (Schritte) --- */
+        .steps-container {
+            margin-top: 80px;
+            padding: 60px 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            background: rgba(0,0,0,0.2);
+        }
+
+        .step-row {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            background: var(--surface-color);
+            padding: 30px;
+            border-radius: 16px;
+        }
+
+        .step-number {
+            background: linear-gradient(45deg, var(--primary-dark), var(--primary));
+            color: #000;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 900;
+            flex-shrink: 0;
+            margin-right: 25px;
+        }
+
+        .step-content h4 { margin: 0 0 10px 0; font-size: 1.4rem; }
+        .step-content p { margin: 0; color: var(--text-muted); }
+
+        /* --- CTA BANNER UNTEN (Waitlist Style) --- */
+        .cta-banner {
+            text-align: center;
+            padding: 80px 20px;
+            margin-top: 40px;
+            background: radial-gradient(circle at center, rgba(0, 123, 255, 0.15) 0%, transparent 70%);
+        }
+
+        .waitlist-form {
+            display: flex;
+            justify-content: center;
+            max-width: 500px;
+            margin: 0 auto;
+            gap: 10px;
+        }
+
+        .waitlist-input {
+            flex: 1;
+            padding: 15px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(0,0,0,0.5);
+            color: #fff;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        .waitlist-input:focus {
+            outline: none;
+            border-color: var(--primary);
         }
 
         /* --- FOOTER --- */
         footer { 
-            margin-top: auto; /* Drückt den Footer immer ans Ende der Seite */
+            margin-top: auto; 
             padding: 40px 0; 
             border-top: 1px solid rgba(255,255,255,0.05); 
             text-align: center; 
             font-size: 0.9rem; 
             color: var(--text-muted); 
+            background: #06090f;
         }
         footer a { 
             color: var(--text-muted); 
@@ -166,65 +290,124 @@
         footer a:hover { color: var(--primary); }
 
         /* --- MOBILE OPTIMIERUNG --- */
-        @media (max-width: 600px) {
-            .text-gradient { font-size: 2.2rem; }
-            .hero { padding: 40px 15px; }
-            .btn { 
-                display: block; 
-                width: 100%; 
-                box-sizing: border-box; 
-            }
-            footer a { 
-                display: block; 
-                margin: 15px 0; 
-            }
+        @media (max-width: 768px) {
+            .text-gradient { font-size: 2.5rem; }
+            .hero { padding: 60px 15px 40px; }
+            .waitlist-form { flex-direction: column; }
+            .btn { display: block; width: 100%; box-sizing: border-box; margin-bottom: 15px; }
+            .btn-outline { width: 100%; display: block; box-sizing: border-box; }
+            .step-row { flex-direction: column; text-align: center; align-items: center; }
+            .step-number { margin: 0 0 20px 0; }
+            footer a { display: block; margin: 15px 0; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="container">
+    <div class="header-content">
         <h1>Cruising</h1>
+        <div class="badge-dev">🚧 In Entwicklung</div>
     </div>
 </header>
 
-<div class="container" style="flex: 1;">
-    <div class="hero">
-        <h2 class="text-gradient">Deine Community<br>für Auto-Enthusiasten</h2>
-        <p>Verbinde dich, plane sportliche Ausfahrten und entdecke die besten Routen direkt in deiner Umgebung.</p>
-        <a href="#" class="btn">Demnächst im App Store</a>
+<div class="hero">
+    <h2 class="text-gradient">Die Straße ruft.<br>Mach dich bereit.</h2>
+    <p>Cruising wird mehr als nur Navigation. Es wird die ultimative App für Petrolheads, Tuner und Kurvenjäger. Wir arbeiten auf Hochtouren am Release für iOS und Android.</p>
+    
+    <div style="max-width: 400px; margin: 0 auto;">
+        <a href="#waitlist" class="btn">Release nicht verpassen</a>
+        <a href="#features" class="btn-outline" style="margin-top: 15px;">Erster Einblick</a>
     </div>
+</div>
 
-    <div class="features-section">
-        <h3>Warum Cruising?</h3>
-        <div class="grid">
-            <div class="card">
-                <div class="card-icon">📍</div>
-                <h4>Live Map</h4>
-                <p>Entdecke die besten Checkpoints und sieh, wer gerade in deiner Nähe cruist.</p>
+<div id="features" class="container text-center">
+    <h3 class="section-title">Entwickelt für Fahrer</h3>
+    <p class="section-subtitle">Ein Sneak Peek auf die Features, die dich zum Launch erwarten.</p>
+    
+    <div class="grid" style="text-align: left;">
+        <div class="card">
+            <div class="card-icon">🗺️</div>
+            <h4>Streckenplaner</h4>
+            <p>Plane detaillierte Rundstrecken oder A-nach-B Sprints. Setze eigene Checkpoints auf der Karte und teile deine Traumroute mit der Community.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">⏱️</div>
+            <h4>Telemetrie & Timer</h4>
+            <p>Egal ob eine Runde oder fünf: Unser GPS-Timer misst deine Zeiten zwischen den Sektoren, berechnet Durchschnittsgeschwindigkeiten und speichert deine Top-Speed.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">🏆</div>
+            <h4>Lokale Leaderboards</h4>
+            <p>Jede öffentliche Strecke hat ihre eigene Bestenliste. Kämpfe um die Bestzeit, vergleiche dich mit Freunden und werde der King of the Hill.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">🚘</div>
+            <h4>Virtuelle Garage</h4>
+            <p>Dein Auto, dein Stolz. Lege dein Profil an, füge Fotos und Leistungsdaten deiner Fahrzeuge hinzu und wähle aus, mit welchem Auto du fährst.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">🤝</div>
+            <h4>Echte Community</h4>
+            <p>Finde Gleichgesinnte in deiner Nähe. Adde Freunde, sieh dir ihre gefahrenen Routen an und verabredet euch für die nächste gemeinsame Tour.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">🌙</div>
+            <h4>Nachtfahrt-Modus</h4>
+            <p>Ein extrem sauberes, ablenkungsfreies Dark-Mode User Interface, das speziell dafür entwickelt wurde, dich beim Fahren nicht zu blenden.</p>
+        </div>
+    </div>
+</div>
+
+<div class="steps-container">
+    <div class="container">
+        <h3 class="section-title text-center">So funktioniert's bald</h3>
+        <p class="section-subtitle text-center">Kein langes Setup. Account erstellen und direkt Gas geben.</p>
+
+        <div class="step-row">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <h4>Profil & Garage anlegen</h4>
+                <p>Sobald die App live ist, wählst du einen Fahrernamen und fügst direkt dein Auto mit Bild und Daten zu deiner virtuellen Garage hinzu.</p>
             </div>
-            <div class="card">
-                <div class="card-icon">⏱️</div>
-                <h4>Routen & Sprints</h4>
-                <p>Tracke deine Zeiten auf Rundstrecken oder A-nach-B Sprints und miss dich mit anderen.</p>
+        </div>
+
+        <div class="step-row">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <h4>Strecke finden oder erstellen</h4>
+                <p>Öffne die Karte und suche nach Strecken in deinem Umkreis, oder nutze den Routenplaner, um deine persönliche Hausstrecke einzuzeichnen.</p>
             </div>
-            <div class="card">
-                <div class="card-icon">🤝</div>
-                <h4>Community</h4>
-                <p>Zeig deine virtuelle Garage, adde Freunde und verpasse kein Treffen mehr.</p>
+        </div>
+
+        <div class="step-row">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <h4>Starten & Rekorde brechen</h4>
+                <p>Fahre zum Startpunkt. Sobald du den Checkpoint passierst, läuft die Zeit. Beende deine Fahrt und trage dich in die Bestenliste ein!</p>
             </div>
         </div>
     </div>
 </div>
 
+<div id="waitlist" class="cta-banner">
+    <h3 class="section-title">Bereit für den Start?</h3>
+    <p style="color: var(--text-muted); font-size: 1.2rem; margin-bottom: 30px;">Die Entwicklung läuft auf Hochtouren. Halte die Augen offen – bald startet die erste Testphase!</p>
+    
+    <div class="waitlist-form">
+        <input type="email" class="waitlist-input" placeholder="Deine E-Mail-Adresse" disabled>
+        <button class="btn" style="padding: 15px 30px;" onclick="alert('Die Warteliste öffnet in Kürze! Schau bald wieder vorbei.')">Benachrichtigt mich</button>
+    </div>
+</div>
+
 <footer>
-    <div class="container">
-        <p>&copy; 2026 Cruising App<br>Made with ❤️ for cars.</p>
-        <br>
-        <a href="impressum.html">Impressum</a>
-        <a href="datenschutz.html">Datenschutz</a>
-        <a href="agb.html">Nutzungsbedingungen</a>
+    <div class="container" style="padding: 20px 0 0 0;">
+        <p>&copy; 2026 Cruising App<br>Made with ❤️ for petrolheads.</p>
+        <div style="margin-top: 20px;">
+            <a href="impressum.html">Impressum</a>
+            <a href="datenschutz.html">Datenschutz</a>
+            <a href="agb.html">Nutzungsbedingungen</a>
+        </div>
     </div>
 </footer>
 
