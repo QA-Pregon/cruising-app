@@ -4,99 +4,179 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cruising App - Finde deine Route</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
     <style>
-        /* Grunddesign */
+        /* --- CSS VARIABLEN FÜR MODERNEN DARK MODE --- */
+        :root {
+            --bg-color: #0b0f19; /* Tiefes, edles Dunkelblau/Schwarz */
+            --surface-color: #1a2332; /* Etwas hellere Karten */
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --primary: #00e5ff; /* Das leuchtende Cyan aus der App */
+            --primary-dark: #007bff;
+            --glow: rgba(0, 229, 255, 0.3);
+        }
+
+        /* --- GRUNDDESIGN --- */
         body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            font-family: 'Inter', sans-serif; 
             margin: 0; 
             padding: 0; 
             line-height: 1.6; 
-            color: #333; 
-            background-color: #f9f9f9;
+            color: var(--text-main); 
+            background-color: var(--bg-color);
+            background-image: radial-gradient(circle at 50% 0%, #1a2332 0%, transparent 70%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Header Bereich */
-        header { 
-            background-color: #222; 
-            color: #fff; 
-            padding: 20px 0; 
-            text-align: center; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        /* Container hält alles mittig und begrenzt die Breite */
         .container { 
-            width: 90%; /* Nimmt 90% der Breite auf Handys */
-            max-width: 800px; /* Aber maximal 800px auf großen Screens */
+            width: 90%; 
+            max-width: 900px; 
             margin: 0 auto; 
             padding: 20px 0; 
         }
 
-        h1 { margin: 0; font-size: 1.8rem; }
-        h2 { color: #222; margin-top: 0; }
-        
-        /* Der "Hero" Bereich (Der wichtigste Kasten oben) */
+        /* --- HEADER --- */
+        header { 
+            padding: 25px 0; 
+            text-align: center; 
+            background: rgba(11, 15, 25, 0.8);
+            backdrop-filter: blur(10px); /* Glassmorphism Effekt */
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        h1 { 
+            margin: 0; 
+            font-size: 1.8rem; 
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+
+        /* --- HERO BEREICH --- */
         .hero { 
             text-align: center; 
-            padding: 40px 20px; 
-            background-color: #ffffff; 
-            border-radius: 12px; 
-            margin-top: 30px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 80px 20px 60px; 
         }
 
-        /* Der App Store Button */
+        /* Ein cooler Farbverlauf für die Hauptüberschrift */
+        .text-gradient {
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 3rem;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+        }
+
+        /* --- APP STORE BUTTON --- */
         .btn { 
             display: inline-block; 
-            background: #007bff; /* Dein App-Blau */
-            color: #fff; 
-            padding: 15px 30px; 
+            background: linear-gradient(45deg, var(--primary-dark), var(--primary)); 
+            color: #000; 
+            padding: 16px 36px; 
             text-decoration: none; 
-            border-radius: 50px; /* Runder Button (pill shape) */
-            margin-top: 20px; 
-            font-weight: bold; 
+            border-radius: 50px; 
+            font-weight: 900; 
             font-size: 1.1rem;
-            transition: background 0.3s ease;
+            box-shadow: 0 10px 25px var(--glow);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        .btn:hover { background: #0056b3; }
+        .btn:hover { 
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px var(--glow);
+        }
 
-        /* Footer Links */
+        /* --- FEATURES GRID --- */
+        .features-section {
+            margin-top: 40px;
+        }
+
+        .features-section h3 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--surface-color);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 229, 255, 0.3);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card h4 {
+            margin: 0 0 10px 0;
+            font-size: 1.2rem;
+            color: var(--text-main);
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* --- FOOTER --- */
         footer { 
-            margin-top: 60px; 
+            margin-top: auto; /* Drückt den Footer immer ans Ende der Seite */
             padding: 40px 0; 
-            border-top: 1px solid #e0e0e0; 
+            border-top: 1px solid rgba(255,255,255,0.05); 
             text-align: center; 
             font-size: 0.9rem; 
-            color: #666; 
+            color: var(--text-muted); 
         }
         footer a { 
-            color: #666; 
+            color: var(--text-muted); 
             text-decoration: none; 
-            margin: 0 10px; 
-            display: inline-block; /* Damit sie auf Mobile nicht aneinander kleben */
+            margin: 0 15px; 
+            display: inline-block; 
+            transition: color 0.3s ease;
         }
-        footer a:hover { color: #007bff; text-decoration: underline; }
+        footer a:hover { color: var(--primary); }
 
         /* --- MOBILE OPTIMIERUNG --- */
-        /* Diese Regeln gelten nur, wenn der Bildschirm kleiner als 600px ist (Handys) */
         @media (max-width: 600px) {
-            h1 { font-size: 1.5rem; } /* Etwas kleinere Überschrift */
-            
-            .hero { 
-                padding: 30px 15px; 
-                margin-top: 15px; 
+            .text-gradient { font-size: 2.2rem; }
+            .hero { padding: 40px 15px; }
+            .btn { 
+                display: block; 
+                width: 100%; 
+                box-sizing: border-box; 
             }
-
-            .btn {
-                display: block; /* Button über die volle Breite */
-                width: 100%;
-                box-sizing: border-box; /* Verhindert, dass Padding die Breite sprengt */
-                text-align: center;
-            }
-
-            footer a {
-                display: block; /* Links untereinander statt nebeneinander */
-                margin: 10px 0;
+            footer a { 
+                display: block; 
+                margin: 15px 0; 
             }
         }
     </style>
@@ -105,32 +185,42 @@
 
 <header>
     <div class="container">
-        <h1>Cruising App 🚗💨</h1>
+        <h1>Cruising</h1>
     </div>
 </header>
 
-<div class="container">
+<div class="container" style="flex: 1;">
     <div class="hero">
-        <h2>Deine Community für Auto-Enthusiasten</h2>
-        <p>Verbinde dich, finde spontane Treffen und entdecke die besten Routen direkt in deiner Umgebung.</p>
-        
+        <h2 class="text-gradient">Deine Community<br>für Auto-Enthusiasten</h2>
+        <p>Verbinde dich, plane sportliche Ausfahrten und entdecke die besten Routen direkt in deiner Umgebung.</p>
         <a href="#" class="btn">Demnächst im App Store</a>
     </div>
 
-    <div style="margin-top: 40px;">
+    <div class="features-section">
         <h3>Warum Cruising?</h3>
-        <p>Cruising ist die ultimative Begleiter-App für alle, die das Fahren lieben. Egal ob Tuner, Oldtimer-Fan oder Sportwagen-Fahrer.</p>
-        <ul style="padding-left: 20px; line-height: 1.8;">
-            <li>📍 <strong>Live Map:</strong> Sieh, wer gerade in der Nähe cruist.</li>
-            <li>🤝 <strong>Community:</strong> Finde Gleichgesinnte.</li>
-            <li>📅 <strong>Events:</strong> Verpasse kein Treffen mehr.</li>
-        </ul>
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon">📍</div>
+                <h4>Live Map</h4>
+                <p>Entdecke die besten Checkpoints und sieh, wer gerade in deiner Nähe cruist.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">⏱️</div>
+                <h4>Routen & Sprints</h4>
+                <p>Tracke deine Zeiten auf Rundstrecken oder A-nach-B Sprints und miss dich mit anderen.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🤝</div>
+                <h4>Community</h4>
+                <p>Zeig deine virtuelle Garage, adde Freunde und verpasse kein Treffen mehr.</p>
+            </div>
+        </div>
     </div>
 </div>
 
 <footer>
     <div class="container">
-        <p>&copy; 2025 Cruising App<br>Made with ❤️ for cars.</p>
+        <p>&copy; 2026 Cruising App<br>Made with ❤️ for cars.</p>
         <br>
         <a href="impressum.html">Impressum</a>
         <a href="datenschutz.html">Datenschutz</a>
