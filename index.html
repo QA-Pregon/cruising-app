@@ -61,6 +61,22 @@
             margin: 0 auto;
         }
 
+        /* NEU: Flex-Container für Logo und Titel */
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* NEU: Styling für das App Icon */
+        .app-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
         h1 { 
             margin: 0; 
             font-size: 1.5rem; 
@@ -100,6 +116,25 @@
             color: var(--text-muted);
             max-width: 650px;
             margin: 0 auto 40px auto;
+        }
+
+        /* NEU: Styling für den App Banner im Hero Bereich */
+        .hero-banner {
+            max-width: 100%;
+            width: 800px; /* Maximale Breite des Screenshots */
+            height: auto;
+            border-radius: 20px;
+            margin-top: 60px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.1);
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            transition: transform 0.5s ease;
+        }
+
+        .hero-banner:hover {
+            transform: translateY(-5px);
         }
 
         /* --- BUTTONS --- */
@@ -285,7 +320,7 @@
             text-decoration: none; 
             margin: 0 15px; 
             display: inline-block; 
-            transition: color 0.3s ease;
+            transition: color 0.3s ease; 
         }
         footer a:hover { color: var(--primary); }
 
@@ -293,6 +328,7 @@
         @media (max-width: 768px) {
             .text-gradient { font-size: 2.5rem; }
             .hero { padding: 60px 15px 40px; }
+            .hero-banner { margin-top: 40px; border-radius: 12px; }
             .waitlist-form { flex-direction: column; }
             .btn { display: block; width: 100%; box-sizing: border-box; margin-bottom: 15px; }
             .btn-outline { width: 100%; display: block; box-sizing: border-box; }
@@ -306,7 +342,10 @@
 
 <header>
     <div class="header-content">
-        <h1>Cruising</h1>
+        <div class="brand-container">
+            <img src="assets/app-icon.png" alt="Icon" class="app-icon" onerror="this.style.display='none'">
+            <h1>Cruising</h1>
+        </div>
         <div class="badge-dev">🚧 In Entwicklung</div>
     </div>
 </header>
@@ -319,6 +358,8 @@
         <a href="#waitlist" class="btn">Release nicht verpassen</a>
         <a href="#features" class="btn-outline" style="margin-top: 15px;">Erster Einblick</a>
     </div>
+
+    <img src="assets/app-banner.png" alt="Cruising App Interface" class="hero-banner" onerror="this.style.display='none'">
 </div>
 
 <div id="features" class="container text-center">
@@ -330,6 +371,11 @@
             <div class="card-icon">🗺️</div>
             <h4>Streckenplaner</h4>
             <p>Plane detaillierte Rundstrecken oder A-nach-B Sprints. Setze eigene Checkpoints auf der Karte und teile deine Traumroute mit der Community.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">🛣️</div>
+            <h4>Freie Fahrt & Ausflüge</h4>
+            <p>Fahre einfach los, ohne vorherige Planung. Zeichne deinen Trip per GPS auf, miss deine Telemetrie und teile deine schönsten Ausflüge mit der Community.</p>
         </div>
         <div class="card">
             <div class="card-icon">⏱️</div>
