@@ -62,14 +62,12 @@
             margin: 0 auto;
         }
 
-        /* NEU: Flex-Container für Logo und Titel */
         .brand-container {
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
-        /* NEU: Styling für das App Icon */
         .app-icon {
             width: 36px;
             height: 36px;
@@ -119,10 +117,9 @@
             margin: 0 auto 40px auto;
         }
 
-        /* NEU: Styling für den App Banner im Hero Bereich */
         .hero-banner {
             max-width: 100%;
-            width: 800px; /* Maximale Breite des Screenshots */
+            width: 800px;
             height: auto;
             border-radius: 20px;
             margin-top: 60px;
@@ -200,7 +197,7 @@
         /* --- FEATURES GRID --- */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 24px;
         }
 
@@ -353,7 +350,7 @@
 
 <div class="hero">
     <h2 class="text-gradient">Die Straße ruft.<br>Mach dich bereit.</h2>
-    <p>Cruising wird mehr als nur Navigation. Es wird die ultimative App für Petrolheads, Tuner und Kurvenjäger. Wir arbeiten auf Hochtouren am Release für iOS und Android.</p>
+    <p>Cruising wird mehr als nur Navigation. Es wird die ultimative App für Petrolheads, Tuner und Kurvenjäger. Kostenlos starten und gemeinsam mit der Community die besten Strecken finden.</p>
     
     <div style="max-width: 400px; margin: 0 auto;">
         <a href="#waitlist" class="btn">Release nicht verpassen</a>
@@ -376,12 +373,18 @@
         <div class="card">
             <div class="card-icon">🛣️</div>
             <h4>Freie Fahrt & Ausflüge</h4>
-            <p>Fahre einfach los, ohne vorherige Planung. Zeichne deinen Trip per GPS auf, miss deine Telemetrie und teile deine schönsten Ausflüge mit der Community.</p>
+            <p>Fahre einfach los, ohne vorherige Planung. Zeichne deinen Trip per GPS auf, miss deine Telemetrie und speichere deine schönsten Ausflüge.</p>
         </div>
         <div class="card">
             <div class="card-icon">⏱️</div>
             <h4>Telemetrie & Timer</h4>
             <p>Egal ob eine Runde oder fünf: Unser GPS-Timer misst deine Zeiten zwischen den Sektoren, berechnet Durchschnittsgeschwindigkeiten und speichert deine Top-Speed.</p>
+        </div>
+        <!-- NEU: Die Share-Card als großes Highlight -->
+        <div class="card">
+            <div class="card-icon">📸</div>
+            <h4>Story-Ready Share Cards</h4>
+            <p>Generiere mit einem Klick stylische Grafiken deiner Route samt Telemetrie, Höhenprofil und eigenem Hintergrund. Perfekt optimiert für Instagram & TikTok.</p>
         </div>
         <div class="card">
             <div class="card-icon">🏆</div>
@@ -391,17 +394,18 @@
         <div class="card">
             <div class="card-icon">🚘</div>
             <h4>Virtuelle Garage</h4>
-            <p>Dein Auto, dein Stolz. Lege dein Profil an, füge Fotos und Leistungsdaten deiner Fahrzeuge hinzu und wähle aus, mit welchem Auto du fährst.</p>
+            <p>Dein Auto, dein Stolz. Füge Fotos und Leistungsdaten deiner Fahrzeuge hinzu und wähle vor jeder Fahrt aus, mit welchem Auto du auf Rekordjagd gehst.</p>
         </div>
         <div class="card">
             <div class="card-icon">🤝</div>
             <h4>Echte Community</h4>
-            <p>Finde Gleichgesinnte in deiner Nähe. Adde Freunde, sieh dir ihre gefahrenen Routen an und verabredet euch für die nächste gemeinsame Tour.</p>
+            <p>Finde Gleichgesinnte in deiner Nähe. Adde Freunde, sieh dir ihre gefahrenen Routen an und verabredet euch direkt für die nächste gemeinsame Tour.</p>
         </div>
+        <!-- NEU: Das Freemium/Premium-Modell erklärt -->
         <div class="card">
-            <div class="card-icon">🌙</div>
-            <h4>Nachtfahrt-Modus</h4>
-            <p>Ein extrem sauberes, ablenkungsfreies Dark-Mode User Interface, das speziell dafür entwickelt wurde, dich beim Fahren nicht zu blenden.</p>
+            <div class="card-icon">⭐</div>
+            <h4>Kostenlos & Premium</h4>
+            <p>Starte komplett kostenlos in die App! Werbeunterstützt und mit vollem Zugriff auf das Wichtigste. Für Hardcore-Fahrer gibt es ein Premium-Upgrade ohne Limits.</p>
         </div>
     </div>
 </div>
