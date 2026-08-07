@@ -1,0 +1,274 @@
+/* Cruising - gemeinsames Design-System für alle Seiten */
+
+:root {
+    --bg: #0c0e11;
+    --bg-elevated: #101317;
+    --surface: #16191d;
+    --surface-2: #1e2227;
+    --border: rgba(255,255,255,0.08);
+    --border-strong: rgba(255,255,255,0.16);
+    --text: #f2f3f5;
+    --text-muted: #9198a1;
+    --text-faint: #5b6169;
+    --accent: #2ec2ff;
+    --accent-dim: rgba(46,194,255,0.14);
+    --warn: #ffb020;
+    --warn-dim: rgba(255,176,32,0.14);
+    --danger: #ff5a5a;
+    --danger-dim: rgba(255,90,90,0.12);
+    --radius: 16px;
+    --font-display: 'Rajdhani', sans-serif;
+    --font-body: 'Manrope', sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Feine Asphalt-Körnung als Hintergrund-Textur, rein dekorativ */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+    background-image:
+        radial-gradient(1px 1px at 20px 30px, rgba(255,255,255,0.025) 100%, transparent),
+        radial-gradient(1px 1px at 90px 80px, rgba(255,255,255,0.02) 100%, transparent),
+        radial-gradient(1px 1px at 150px 20px, rgba(255,255,255,0.025) 100%, transparent),
+        radial-gradient(1px 1px at 210px 120px, rgba(255,255,255,0.02) 100%, transparent);
+    background-size: 240px 160px;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: var(--text);
+    margin: 0;
+}
+
+p { margin: 0 0 1em; color: var(--text-muted); }
+a { color: var(--accent); }
+
+.mono {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+}
+
+.wrap {
+    width: 92%;
+    max-width: 1080px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* --- TOP NAV (alle Seiten) --- */
+.topnav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(12,14,17,0.82);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+}
+
+.topnav-inner {
+    width: 92%;
+    max-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 0;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text);
+}
+
+.brand img {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    display: block;
+}
+
+.brand span {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: 0.02em;
+}
+
+.status-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--warn);
+    background: var(--warn-dim);
+    border: 1px solid rgba(255,176,32,0.3);
+    padding: 6px 12px;
+    border-radius: 100px;
+}
+
+.status-chip .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--warn);
+    box-shadow: 0 0 6px 1px rgba(255,176,32,0.7);
+}
+
+/* --- BUTTONS --- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.02rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 32px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: #041520;
+    box-shadow: 0 8px 24px rgba(46,194,255,0.25);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(46,194,255,0.35); }
+
+.btn-ghost {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border-strong);
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+/* --- LEGAL / READING PAGES --- */
+.legal-page { padding: 48px 0 80px; }
+
+.legal-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 48px;
+}
+
+.legal-card h1 {
+    font-size: 2rem;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 16px;
+    margin-bottom: 6px;
+}
+
+.legal-stamp {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-faint);
+    margin-bottom: 32px;
+    display: block;
+}
+
+.legal-card h2 {
+    font-size: 1.25rem;
+    color: var(--accent);
+    border-left: 3px solid var(--accent);
+    padding-left: 12px;
+    margin-top: 40px;
+    margin-bottom: 14px;
+}
+
+.legal-card h3 {
+    font-size: 1.02rem;
+    color: var(--text);
+    margin-top: 22px;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.legal-card p, .legal-card li { color: var(--text-muted); }
+.legal-card ul { padding-left: 20px; margin-bottom: 15px; }
+.legal-card li { margin-bottom: 6px; }
+.legal-card strong { color: var(--text); }
+.legal-card a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(46,194,255,0.35); }
+.legal-card a:hover { border-color: var(--accent); }
+
+.legal-callout {
+    border-radius: 12px;
+    padding: 20px 22px;
+    margin: 24px 0;
+    border: 1px solid;
+}
+
+.legal-callout.warn {
+    background: var(--danger-dim);
+    border-color: rgba(255,90,90,0.35);
+}
+.legal-callout.warn h2 { color: var(--danger); border-color: var(--danger); }
+
+.legal-callout.info {
+    background: var(--accent-dim);
+    border-color: rgba(46,194,255,0.35);
+}
+.legal-callout.info h3 { color: var(--accent); margin-top: 0; }
+
+.legal-footer {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-size: 0.85rem;
+    color: var(--text-faint);
+}
+
+/* --- SITE FOOTER --- */
+.site-footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 0;
+    text-align: center;
+    color: var(--text-faint);
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 1;
+}
+.site-footer a {
+    color: var(--text-muted);
+    text-decoration: none;
+    margin: 0 14px;
+}
+.site-footer a:hover { color: var(--accent); }
+
+@media (max-width: 720px) {
+    .legal-card { padding: 28px 22px; }
+    .topnav-inner { flex-wrap: wrap; gap: 10px; }
+}
