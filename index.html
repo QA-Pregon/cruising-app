@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cruising App | Nicht jede Fahrt braucht eine Uhr.</title>
     <meta name="description" content="Cruising zeichnet jede Fahrt auf, von der eigenen Bestzeit bis zum Ausflug ohne Ziel. Strecken, gemeinsame Ausfahrten, Erfolge und eine Community aus echten Petrolheads.">
-    <link rel="icon" type="image/png" href="assets/app-icon.png">
+    <link rel="icon" type="image/png" href="/assets/app-icon.png">
+    <script src="/assets/lang.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -232,11 +233,24 @@
 
 <nav class="topnav">
     <div class="topnav-inner">
-        <a href="index.html" class="brand">
-            <img src="assets/app-icon.png" alt="Cruising Logo">
+        <a href="/index.html" class="brand">
+            <img src="/assets/app-icon.png" alt="Cruising Logo">
             <span>CRUISING</span>
         </a>
-        <div class="status-chip"><span class="dot"></span>Bald am Start</div>
+        <div class="topnav-actions">
+            <div class="lang-switch">
+                <button class="lang-switch-btn" type="button" aria-haspopup="true" aria-expanded="false">🌐 <span class="mono">DE</span></button>
+                <div class="lang-switch-menu">
+                    <a href="/index.html" data-lang="de" class="active">Deutsch</a>
+                    <a href="/en/index.html" data-lang="en">English</a>
+                    <a href="/es/index.html" data-lang="es">Español</a>
+                    <a href="/fr/index.html" data-lang="fr">Français</a>
+                    <a href="/it/index.html" data-lang="it">Italiano</a>
+                    <a href="/pl/index.html" data-lang="pl">Polski</a>
+                </div>
+            </div>
+            <div class="status-chip"><span class="dot"></span>Bald am Start</div>
+        </div>
     </div>
 </nav>
 
@@ -371,9 +385,9 @@
 <footer class="site-footer">
     <div class="wrap">
         <p style="color: var(--text-faint); margin-bottom: 20px;">&copy; 2026 Cruising App · Made for petrolheads.</p>
-        <a href="impressum.html">Impressum</a>
-        <a href="datenschutz.html">Datenschutz</a>
-        <a href="agb.html">Nutzungsbedingungen</a>
+        <a href="/impressum.html">Impressum</a>
+        <a href="/datenschutz.html">Datenschutz</a>
+        <a href="/agb.html">Nutzungsbedingungen</a>
     </div>
 </footer>
 

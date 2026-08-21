@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cruising App | Not every drive needs a stopwatch.</title>
+    <meta name="description" content="Cruising records every drive, from your own best time to a trip with no destination. Routes, group drives, achievements, and a community of real petrolheads.">
+    <link rel="icon" type="image/png" href="/assets/app-icon.png">
+    <script src="/assets/lang.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/style.css">
+    <style>
+        /* --- HERO --- */
+        .hero {
+            position: relative;
+            padding: 90px 0 40px;
+            overflow: hidden;
+        }
+
+        .hero-glow {
+            position: absolute;
+            top: -220px; left: 50%;
+            width: 900px; height: 500px;
+            transform: translateX(-50%);
+            background: radial-gradient(ellipse at center, rgba(46,194,255,0.14) 0%, transparent 68%);
+            pointer-events: none;
+        }
+
+        .hero-inner { text-align: center; position: relative; }
+
+        .status-chip.hero-chip { margin-bottom: 28px; }
+
+        .hero h1 {
+            font-size: clamp(2.6rem, 6vw, 4.4rem);
+            line-height: 1.05;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 .accent { color: var(--accent); }
+
+        .hero-sub {
+            font-size: 1.2rem;
+            max-width: 620px;
+            margin: 0 auto 36px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 64px;
+        }
+
+        /* Stylized route line instead of a generic screenshot frame */
+        .route-line {
+            width: 100%;
+            max-width: 780px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        /* --- TELEMETRY STRIP --- */
+        .telemetry-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin: 56px 0 0;
+        }
+        .telemetry-cell {
+            background: var(--surface);
+            padding: 22px 16px;
+            text-align: center;
+        }
+        .telemetry-cell .val {
+            font-family: var(--font-mono);
+            font-variant-numeric: tabular-nums;
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+        .telemetry-cell .lbl {
+            font-size: 0.78rem;
+            color: var(--text-faint);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-top: 4px;
+        }
+
+        /* --- SECTIONS --- */
+        section { padding: 46px 0; position: relative; }
+
+        .eyebrow {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+            margin-bottom: 16px;
+            max-width: 640px;
+        }
+
+        .section-sub {
+            font-size: 1.08rem;
+            max-width: 560px;
+            margin-bottom: 52px;
+        }
+
+        /* --- FEATURE GRID --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-top: 2px solid var(--accent);
+            border-radius: 14px;
+            padding: 30px 26px;
+        }
+
+        .card .icon {
+            width: 42px; height: 42px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 10px;
+            background: var(--accent-dim);
+            color: var(--accent);
+            margin-bottom: 18px;
+        }
+        .card .icon svg { width: 22px; height: 22px; }
+
+        .card h4 {
+            font-size: 1.18rem;
+            margin-bottom: 10px;
+        }
+        .card p { font-size: 0.95rem; margin: 0; }
+
+        /* --- STEPS (route line) --- */
+        .steps {
+            position: relative;
+        }
+        .steps-track {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            position: relative;
+        }
+        .steps-track::before {
+            content: "";
+            position: absolute;
+            top: 27px; left: 8%; right: 8%;
+            height: 2px;
+            background: repeating-linear-gradient(90deg, var(--border-strong) 0 10px, transparent 10px 20px);
+        }
+        .step {
+            position: relative;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px 22px 24px;
+        }
+        .step-num {
+            width: 56px; height: 56px;
+            border-radius: 50%;
+            background: var(--bg-elevated);
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            font-family: var(--font-mono);
+            font-size: 1.3rem;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 18px;
+            position: relative;
+            z-index: 1;
+        }
+        .step h4 { font-size: 1.12rem; margin-bottom: 8px; }
+        .step p { font-size: 0.93rem; margin: 0; }
+
+        /* --- CTA --- */
+        .cta {
+            text-align: center;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 64px 32px;
+        }
+        .cta .section-title, .cta .section-sub { margin-left: auto; margin-right: auto; }
+
+        .waitlist-form {
+            display: flex;
+            justify-content: center;
+            max-width: 460px;
+            margin: 0 auto;
+            gap: 10px;
+        }
+        .waitlist-input {
+            flex: 1;
+            padding: 14px 18px;
+            border-radius: 10px;
+            border: 1px solid var(--border-strong);
+            background: var(--surface-2);
+            color: var(--text);
+            font-size: 1rem;
+            font-family: var(--font-body);
+        }
+        .waitlist-input:focus { outline: none; border-color: var(--accent); }
+        .waitlist-note { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-faint); margin-top: 16px; }
+
+        @media (max-width: 760px) {
+            .hero-actions { flex-direction: column; align-items: stretch; }
+            .telemetry-strip { grid-template-columns: repeat(2, 1fr); }
+            .steps-track { grid-template-columns: 1fr; }
+            .steps-track::before { display: none; }
+            .waitlist-form { flex-direction: column; }
+            section { padding: 36px 0; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="topnav">
+    <div class="topnav-inner">
+        <a href="/en/index.html" class="brand">
+            <img src="/assets/app-icon.png" alt="Cruising Logo">
+            <span>CRUISING</span>
+        </a>
+        <div class="topnav-actions">
+            <div class="lang-switch">
+                <button class="lang-switch-btn" type="button" aria-haspopup="true" aria-expanded="false">🌐 <span class="mono">EN</span></button>
+                <div class="lang-switch-menu">
+                    <a href="/index.html" data-lang="de">Deutsch</a>
+                    <a href="/en/index.html" data-lang="en" class="active">English</a>
+                    <a href="/es/index.html" data-lang="es">Español</a>
+                    <a href="/fr/index.html" data-lang="fr">Français</a>
+                    <a href="/it/index.html" data-lang="it">Italiano</a>
+                    <a href="/pl/index.html" data-lang="pl">Polski</a>
+                </div>
+            </div>
+            <div class="status-chip"><span class="dot"></span>Coming soon</div>
+        </div>
+    </div>
+</nav>
+
+<div class="hero">
+    <div class="hero-glow"></div>
+    <div class="wrap hero-inner">
+        <h1>Not every drive needs a stopwatch.<br><span class="accent">But every one deserves a story.</span></h1>
+        <p class="hero-sub">Whether it's a best time on your home track or a trip with no destination: Cruising records every drive and turns it into more than a number on the dash.</p>
+
+        <div class="hero-actions">
+            <a href="#waitlist" class="btn btn-primary">Join at launch</a>
+            <a href="#features" class="btn btn-ghost">What can it do?</a>
+        </div>
+
+        <svg class="route-line" viewBox="0 0 780 160" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stylized route line">
+            <path d="M20 130 C 140 130, 160 40, 280 40 S 420 130, 540 90 S 680 20, 760 40" stroke="var(--border-strong)" stroke-width="2" stroke-dasharray="1 10" stroke-linecap="round"/>
+            <path d="M20 130 C 140 130, 160 40, 280 40" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="20" cy="130" r="6" fill="var(--accent)"/>
+            <circle cx="280" cy="40" r="5" fill="var(--text)" opacity="0.5"/>
+            <circle cx="540" cy="90" r="5" fill="var(--text)" opacity="0.3"/>
+            <circle cx="760" cy="40" r="5" fill="var(--text)" opacity="0.2"/>
+        </svg>
+
+        <div class="telemetry-strip">
+            <div class="telemetry-cell"><div class="val mono">GPS</div><div class="lbl">Live Tracking</div></div>
+            <div class="telemetry-cell"><div class="val mono">Avg / Top</div><div class="lbl">Speed</div></div>
+            <div class="telemetry-cell"><div class="val mono">#1–∞</div><div class="lbl">Leaderboards</div></div>
+            <div class="telemetry-cell"><div class="val mono">1-Click</div><div class="lbl">Share Cards</div></div>
+        </div>
+    </div>
+</div>
+
+<section id="features" class="wrap">
+    <span class="eyebrow">Features</span>
+    <h2 class="section-title">Built for drivers, not for commuters.</h2>
+    <p class="section-sub">A quick look at what's waiting for you at launch.</p>
+
+    <div class="grid">
+        <div class="card">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg></div>
+            <h4>Route Planner</h4>
+            <p>Lap or point-to-point from A to B: set your own checkpoints directly on the map and share your home track with the community.</p>
+        </div>
+        <div class="card">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg></div>
+            <h4>Free Drive &amp; Outings</h4>
+            <p>No plan, no route, just go. Your trip is recorded via GPS, including telemetry and the best moments of your drive.</p>
+        </div>
+        <div class="card">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+            <h4>Telemetry &amp; Timer</h4>
+            <p>One lap or five: the GPS timer measures sector times, calculates average speed, and records your top speed for good.</p>
+        </div>
+        <div class="card">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M8 5l1.5-2h5L16 5"/></svg></div>
+            <h4>Story-Ready Share Cards</h4>
+            <p>One click generates a finished graphic of your drive: route, telemetry, elevation profile, your own background. Ready to post straight to your story or feed.</p>
+        </div>
+        <div class="card">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.6 6.6L22 9l-5.5 4.7L18 22l-6-3.8L6 22l1.5-8.3L2 9l7.4-.4z"/></svg></div>
+            <h4>Local Leaderboards</h4>
+            <p>Every public route has its own ranking. Compare yourself with friends and the region, and defend your best time.</p>
+        </div>
+        <div class="card">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M6 17V9l6-4 6 4v8M9 17v-4h6v4"/></svg></div>
+            <h4>Virtual Garage</h4>
+            <p>Your car, your data. Add photos and specs for your vehicles and pick which one you're chasing records with before every drive.</p>
+        </div>
+        <div class="card">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="3.2"/><path d="M2.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><circle cx="17" cy="8" r="2.6"/><path d="M15 13.2c2.5.3 4.5 2 4.5 4.8"/></svg></div>
+            <h4>A Real Community</h4>
+            <p>Find like-minded drivers nearby, add friends, see the routes they've driven, and arrange your next outing directly.</p>
+        </div>
+        <div class="card">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 15l2.5 2.5L16 12"/></svg></div>
+            <h4>Group Drives</h4>
+            <p>Arrange an outing with friends, invite more people, and navigate together to the meeting point once it's time to go.</p>
+        </div>
+        <div class="card">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="12" width="4" height="8"/><rect x="10" y="6" width="4" height="14"/><rect x="17" y="9" width="4" height="11"/></svg></div>
+            <h4>Monthly Recap</h4>
+            <p>At the end of every month, you get an overview of your kilometers driven, your drives, and the best moments, all at a glance.</p>
+        </div>
+        <div class="card">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v4a5 5 0 01-10 0V4z"/><path d="M7 5H4.5A1.5 1.5 0 004 8.5C4.5 10 6 10.5 7 10.5M17 5h2.5A1.5 1.5 0 0121 8.5C20.5 10 19 10.5 18 10.5"/><path d="M12 13v4M8 21h8"/></svg></div>
+            <h4>Achievements</h4>
+            <p>Over 40 achievements are waiting to be unlocked, from distance milestones to silly surprises for real night owls.</p>
+        </div>
+    </div>
+</section>
+
+<section class="steps">
+    <div class="wrap">
+        <span class="eyebrow">How It Works</span>
+        <h2 class="section-title">No setup marathon. Set up your profile, hit the gas.</h2>
+        <p class="section-sub">That's how simple Cruising is to use, from day one.</p>
+
+        <div class="steps-track">
+            <div class="step">
+                <div class="step-num mono">01</div>
+                <h4>Set up profile &amp; garage</h4>
+                <p>Pick a driver name, add your car with a photo and specs to the virtual garage. Done.</p>
+            </div>
+            <div class="step">
+                <div class="step-num mono">02</div>
+                <h4>Pick a route or just start</h4>
+                <p>Open the map: find a route nearby, draw your own, or skip routes entirely and go straight into Free Drive.</p>
+            </div>
+            <div class="step">
+                <div class="step-num mono">03</div>
+                <h4>Drive, capture, share</h4>
+                <p>Time it for the leaderboard, or just record the drive, your finished share card is waiting at the end.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="waitlist" class="wrap">
+    <div class="cta">
+        <span class="eyebrow">Miss the launch? Not you.</span>
+        <h2 class="section-title">Ready for the starting flag?</h2>
+        <p class="section-sub">Development is in full swing. Sign up and we'll let you know as soon as it's ready.</p>
+
+        <div class="waitlist-form">
+            <input type="email" class="waitlist-input" placeholder="Your email address" disabled>
+            <button class="btn btn-primary" onclick="alert('The waitlist opens soon! Check back shortly.')">Notify me</button>
+        </div>
+        <div class="waitlist-note">// Sign-up opens soon</div>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <div class="wrap">
+        <p style="color: var(--text-faint); margin-bottom: 20px;">&copy; 2026 Cruising App · Made for petrolheads.</p>
+        <a href="/en/impressum.html">Legal Notice</a>
+        <a href="/en/datenschutz.html">Privacy Policy</a>
+        <a href="/en/agb.html">Terms of Service</a>
+    </div>
+</footer>
+
+</body>
+</html>

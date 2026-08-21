@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AGB | Cruising App</title>
-    <link rel="icon" type="image/png" href="assets/app-icon.png">
+    <link rel="icon" type="image/png" href="/assets/app-icon.png">
+    <script src="/assets/lang.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -14,10 +15,23 @@
 
 <nav class="topnav">
     <div class="topnav-inner">
-        <a href="index.html" class="brand">
-            <img src="assets/app-icon.png" alt="Cruising Logo">
+        <a href="/index.html" class="brand">
+            <img src="/assets/app-icon.png" alt="Cruising Logo">
             <span>CRUISING</span>
         </a>
+        <div class="topnav-actions">
+            <div class="lang-switch">
+                <button class="lang-switch-btn" type="button" aria-haspopup="true" aria-expanded="false">🌐 <span class="mono">DE</span></button>
+                <div class="lang-switch-menu">
+                    <a href="/agb.html" data-lang="de" class="active">Deutsch</a>
+                    <a href="/en/agb.html" data-lang="en">English</a>
+                    <a href="/es/agb.html" data-lang="es">Español</a>
+                    <a href="/fr/agb.html" data-lang="fr">Français</a>
+                    <a href="/it/agb.html" data-lang="it">Italiano</a>
+                    <a href="/pl/agb.html" data-lang="pl">Polski</a>
+                </div>
+            </div>
+        </div>
     </div>
 </nav>
 
@@ -87,7 +101,7 @@
         </ul>
 
         <h2>§ 9 Datenschutz & Account-Löschung</h2>
-        <p>(1) Die Nutzung der App erfordert die Verarbeitung personenbezogener Daten (insbesondere genaue Standortdaten, E-Mail-Adressen und Nutzerverhalten). Details finden Sie in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+        <p>(1) Die Nutzung der App erfordert die Verarbeitung personenbezogener Daten (insbesondere genaue Standortdaten, E-Mail-Adressen und Nutzerverhalten). Details finden Sie in unserer <a href="/datenschutz.html">Datenschutzerklärung</a>.</p>
         <p>(2) Löscht ein Nutzer sein Konto in den App-Einstellungen, wird sein aktiver Zugang sofort gesperrt. Die Daten werden gemäß rechtlicher Vorgaben zur Beweissicherung archiviert und anschließend vollständig anonymisiert oder gelöscht.</p>
 
         <h2>§ 10 Änderungen der AGB</h2>
@@ -109,9 +123,9 @@
 
 <footer class="site-footer">
     <div class="wrap">
-        <a href="index.html">Zur Startseite</a>
-        <a href="impressum.html">Impressum</a>
-        <a href="datenschutz.html">Datenschutz</a>
+        <a href="/index.html">Zur Startseite</a>
+        <a href="/impressum.html">Impressum</a>
+        <a href="/datenschutz.html">Datenschutz</a>
     </div>
 </footer>
 
