@@ -29,8 +29,23 @@
         .eyebrow { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 12px; }
         .section-title { font-size: clamp(1.8rem, 3.4vw, 2.6rem); margin-bottom: 16px; max-width: 640px; }
         .section-sub { font-size: 1.08rem; max-width: 560px; margin-bottom: 52px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 20px; }
-        .card { background: var(--surface); border: 1px solid var(--border); border-top: 2px solid var(--accent); border-radius: 14px; padding: 30px 26px; }
+        .cat-tabs { display: flex; gap: 8px; margin-bottom: 30px; flex-wrap: wrap; }
+        .cat-tab { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.03em; padding: 10px 18px; border-radius: 999px; border: 1px solid var(--border-strong); color: var(--text-muted); cursor: pointer; background: transparent; transition: all 0.15s ease; white-space: nowrap; }
+        .cat-tab:hover { border-color: var(--accent); color: var(--text); }
+        .cat-tab.active { background: var(--accent); border-color: var(--accent); color: #06202b; }
+        .cat-panel { display: none; }
+        .cat-panel.active { display: block; }
+        .scroll-row { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 10px; margin: 0 -4%; padding-left: 4%; padding-right: 4%; scrollbar-width: none; cursor: grab; user-select: none; }
+        .scroll-row::-webkit-scrollbar { display: none; }
+        .scroll-row.dragging { cursor: grabbing; scroll-snap-type: none; }
+        .fade-edge { position: relative; }
+        .fade-edge::after { content: ""; position: absolute; top: 0; right: 0; bottom: 10px; width: 60px; background: linear-gradient(to right, transparent, var(--bg)); pointer-events: none; }
+        .scroll-hint { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 6px; color: var(--text-faint); font-size: 0.8rem; font-weight: 600; }
+        .scroll-hint svg { width: 15px; height: 15px; animation: nudge 1.6s ease-in-out infinite; }
+        @keyframes nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(5px); } }
+        .card { background: var(--surface); border: 1px solid var(--border); border-top: 2px solid var(--accent); border-radius: 14px; padding: 30px 26px; width: 270px; flex-shrink: 0; scroll-snap-align: start; position: relative; }
+        .card.is-new { border-top-color: #7CF3F7; }
+        .card.is-new::after { content: attr(data-new-label); position: absolute; top: 16px; right: 16px; font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; color: #06202b; background: #7CF3F7; padding: 3px 8px; border-radius: 5px; }
         .card .icon { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 10px; background: var(--accent-dim); color: var(--accent); margin-bottom: 18px; }
         .card .icon svg { width: 22px; height: 22px; }
         .card h4 { font-size: 1.18rem; margin-bottom: 10px; }
@@ -117,59 +132,134 @@
     <h2 class="section-title">Fatta per chi guida, non per chi va al lavoro.</h2>
     <p class="section-sub">Un rapido sguardo a quello che ti aspetta al lancio.</p>
 
-    <div class="grid">
-        <div class="card">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg></div>
-            <h4>Pianificatore di percorsi</h4>
-            <p>Circuito o da A a B: posiziona i tuoi checkpoint direttamente sulla mappa e condividi il tuo circuito di casa con la community.</p>
+    <div class="cat-tabs" id="featTabs">
+        <button class="cat-tab active" data-cat="guida">Guida</button>
+        <button class="cat-tab" data-cat="analisi">Analisi</button>
+        <button class="cat-tab" data-cat="community">Community</button>
+    </div>
+
+    <div class="cat-panel active" data-panel="guida">
+        <div class="fade-edge">
+            <div class="scroll-row">
+                <div class="card">
+                    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg></div>
+                    <h4>Pianificatore di percorsi</h4>
+                    <p>Circuito o da A a B: posiziona i tuoi checkpoint direttamente sulla mappa e condividi il tuo circuito di casa con la community.</p>
+                </div>
+                <div class="card">
+                    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg></div>
+                    <h4>Guida libera e uscite</h4>
+                    <p>Nessun piano, nessun percorso, parti e basta. Il tuo viaggio viene registrato via GPS, con la telemetria e i momenti migliori della tua uscita.</p>
+                </div>
+                <div class="card">
+                    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+                    <h4>Telemetria e cronometro</h4>
+                    <p>Un giro o cinque: il cronometro GPS misura i tempi sui settori, calcola la velocità media e registra per sempre la tua velocità massima.</p>
+                </div>
+                <div class="card">
+                    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 15l2.5 2.5L16 12"/></svg></div>
+                    <h4>Uscite di gruppo</h4>
+                    <p>Organizza un'uscita con gli amici, invita altre persone e navigate insieme fino al punto d'incontro quando si parte.</p>
+                </div>
+                <div class="card">
+                    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M6 17V9l6-4 6 4v8M9 17v-4h6v4"/></svg></div>
+                    <h4>Garage virtuale</h4>
+                    <p>La tua auto, i tuoi dati. Aggiungi foto e specifiche dei tuoi veicoli e scegli con quale andare a caccia di record prima di ogni viaggio.</p>
+                </div>
+            </div>
         </div>
-        <div class="card">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg></div>
-            <h4>Guida libera e uscite</h4>
-            <p>Nessun piano, nessun percorso, parti e basta. Il tuo viaggio viene registrato via GPS, con la telemetria e i momenti migliori della tua uscita.</p>
+        <div class="scroll-hint"><span>Scorri per scoprire di più</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></div>
+    </div>
+
+    <div class="cat-panel" data-panel="analisi">
+        <div class="fade-edge">
+            <div class="scroll-row">
+                <div class="card is-new" data-new-label="NUOVO">
+                    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19l5-11 4 7 3-5 4 9"/></svg></div>
+                    <h4>Analisi dello stile di guida</h4>
+                    <p>Accelerazione, frenata e curve del tuo viaggio, rese semplici da leggere invece di numeri grezzi dei sensori.</p>
+                </div>
+                <div class="card">
+                    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M8 5l1.5-2h5L16 5"/></svg></div>
+                    <h4>Share Card pronte da pubblicare</h4>
+                    <p>Un clic genera una grafica completa del tuo viaggio: percorso, telemetria, profilo altimetrico, il tuo sfondo. Pronta da pubblicare direttamente in storia o feed.</p>
+                </div>
+                <div class="card">
+                    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="12" width="4" height="8"/><rect x="10" y="6" width="4" height="14"/><rect x="17" y="9" width="4" height="11"/></svg></div>
+                    <h4>Riepilogo mensile</h4>
+                    <p>Alla fine di ogni mese ricevi una panoramica dei chilometri percorsi, dei tuoi viaggi e dei momenti migliori, tutto in un colpo d'occhio.</p>
+                </div>
+                <div class="card">
+                    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v4a5 5 0 01-10 0V4z"/><path d="M7 5H4.5A1.5 1.5 0 004 8.5C4.5 10 6 10.5 7 10.5M17 5h2.5A1.5 1.5 0 0121 8.5C20.5 10 19 10.5 18 10.5"/><path d="M12 13v4M8 21h8"/></svg></div>
+                    <h4>Obiettivi</h4>
+                    <p>Oltre 40 obiettivi ti aspettano, dai traguardi di distanza alle sorprese divertenti per i veri nottambuli.</p>
+                </div>
+            </div>
         </div>
-        <div class="card">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
-            <h4>Telemetria e cronometro</h4>
-            <p>Un giro o cinque: il cronometro GPS misura i tempi sui settori, calcola la velocità media e registra per sempre la tua velocità massima.</p>
+        <div class="scroll-hint"><span>Scorri per scoprire di più</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></div>
+    </div>
+
+    <div class="cat-panel" data-panel="community">
+        <div class="fade-edge">
+            <div class="scroll-row">
+                <div class="card is-new" data-new-label="NUOVO">
+                    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="3.2"/><path d="M2.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><circle cx="17" cy="8" r="2.6"/><path d="M15 13.2c2.5.3 4.5 2 4.5 4.8"/></svg></div>
+                    <h4>Crews</h4>
+                    <p>Crea un gruppo con gli amici, pubblico o privato, invita membri e scalate insieme la classifica.</p>
+                </div>
+                <div class="card">
+                    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="3.2"/><path d="M2.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><circle cx="17" cy="8" r="2.6"/><path d="M15 13.2c2.5.3 4.5 2 4.5 4.8"/></svg></div>
+                    <h4>Una vera community</h4>
+                    <p>Trova persone affini vicino a te, aggiungi amici, guarda i percorsi che hanno fatto e organizzate subito la prossima uscita insieme.</p>
+                </div>
+                <div class="card">
+                    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.6 6.6L22 9l-5.5 4.7L18 22l-6-3.8L6 22l1.5-8.3L2 9l7.4-.4z"/></svg></div>
+                    <h4>Classifiche locali</h4>
+                    <p>Ogni percorso pubblico ha la propria classifica. Confrontati con gli amici e con la zona, e difendi il tuo miglior tempo.</p>
+                </div>
+            </div>
         </div>
-        <div class="card">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M8 5l1.5-2h5L16 5"/></svg></div>
-            <h4>Share Card pronte da pubblicare</h4>
-            <p>Un clic genera una grafica completa del tuo viaggio: percorso, telemetria, profilo altimetrico, il tuo sfondo. Pronta da pubblicare direttamente in storia o feed.</p>
-        </div>
-        <div class="card">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.6 6.6L22 9l-5.5 4.7L18 22l-6-3.8L6 22l1.5-8.3L2 9l7.4-.4z"/></svg></div>
-            <h4>Classifiche locali</h4>
-            <p>Ogni percorso pubblico ha la propria classifica. Confrontati con gli amici e con la zona, e difendi il tuo miglior tempo.</p>
-        </div>
-        <div class="card">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M6 17V9l6-4 6 4v8M9 17v-4h6v4"/></svg></div>
-            <h4>Garage virtuale</h4>
-            <p>La tua auto, i tuoi dati. Aggiungi foto e specifiche dei tuoi veicoli e scegli con quale andare a caccia di record prima di ogni viaggio.</p>
-        </div>
-        <div class="card">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="3.2"/><path d="M2.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><circle cx="17" cy="8" r="2.6"/><path d="M15 13.2c2.5.3 4.5 2 4.5 4.8"/></svg></div>
-            <h4>Una vera community</h4>
-            <p>Trova persone affini vicino a te, aggiungi amici, guarda i percorsi che hanno fatto e organizzate subito la prossima uscita insieme.</p>
-        </div>
-        <div class="card">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 15l2.5 2.5L16 12"/></svg></div>
-            <h4>Uscite di gruppo</h4>
-            <p>Organizza un'uscita con gli amici, invita altre persone e navigate insieme fino al punto d'incontro quando si parte.</p>
-        </div>
-        <div class="card">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="12" width="4" height="8"/><rect x="10" y="6" width="4" height="14"/><rect x="17" y="9" width="4" height="11"/></svg></div>
-            <h4>Riepilogo mensile</h4>
-            <p>Alla fine di ogni mese ricevi una panoramica dei chilometri percorsi, dei tuoi viaggi e dei momenti migliori, tutto in un colpo d'occhio.</p>
-        </div>
-        <div class="card">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v4a5 5 0 01-10 0V4z"/><path d="M7 5H4.5A1.5 1.5 0 004 8.5C4.5 10 6 10.5 7 10.5M17 5h2.5A1.5 1.5 0 0121 8.5C20.5 10 19 10.5 18 10.5"/><path d="M12 13v4M8 21h8"/></svg></div>
-            <h4>Obiettivi</h4>
-            <p>Oltre 40 obiettivi ti aspettano, dai traguardi di distanza alle sorprese divertenti per i veri nottambuli.</p>
-        </div>
+        <div class="scroll-hint"><span>Scorri per scoprire di più</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></div>
     </div>
 </section>
+
+<script>
+    document.querySelectorAll('#featTabs .cat-tab').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('#featTabs .cat-tab').forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            var cat = btn.dataset.cat;
+            document.querySelectorAll('.cat-panel').forEach(function(p) {
+                p.classList.toggle('active', p.dataset.panel === cat);
+            });
+        });
+    });
+
+    document.querySelectorAll('.scroll-row').forEach(function(row) {
+        var isDown = false;
+        var startX, scrollLeft;
+        row.addEventListener('mousedown', function(e) {
+            isDown = true;
+            row.classList.add('dragging');
+            startX = e.pageX - row.offsetLeft;
+            scrollLeft = row.scrollLeft;
+        });
+        window.addEventListener('mouseup', function() {
+            isDown = false;
+            row.classList.remove('dragging');
+        });
+        row.addEventListener('mouseleave', function() {
+            isDown = false;
+            row.classList.remove('dragging');
+        });
+        row.addEventListener('mousemove', function(e) {
+            if (!isDown) return;
+            e.preventDefault();
+            var x = e.pageX - row.offsetLeft;
+            row.scrollLeft = scrollLeft - (x - startX);
+        });
+    });
+</script>
 
 <section class="steps">
     <div class="wrap">
