@@ -38,7 +38,7 @@
 <div class="wrap legal-page">
     <div class="legal-card">
         <h1>Privacy Policy</h1>
-        <span class="legal-stamp">Last updated: August 24, 2026</span>
+        <span class="legal-stamp">Last updated: September 30, 2026</span>
 
         <p>Thank you for your interest in our app "Cruising". Protecting your privacy is very important to us. Below we provide detailed information about how we handle your data.</p>
 
@@ -59,7 +59,7 @@
         <p>When you register, we store your email address, a chosen display name, your profile picture, and your internal User ID.</p>
 
         <h3>b) Vehicle Information (Virtual Garage)</h3>
-        <p>We store information about the vehicles you add in the app (model, horsepower, year, drive type, photos). This data serves your personal statistics and is displayed to other users in your profile, unless you have restricted this.</p>
+        <p>We store information about the vehicles you add in the app (make, model, horsepower, year, drive type, photos). This data serves your personal statistics and is displayed to other users in your profile, unless you have restricted this.</p>
 
         <h3>c) User-Generated Content &amp; Community</h3>
         <p>Data you actively create:</p>
@@ -70,13 +70,20 @@
             <li>Reports about other users or content.</li>
             <li>Route revision requests (free-text note describing what should be changed about a route).</li>
             <li>Planned group drives, including meeting point, date, invited users, and their acceptances or declines.</li>
+            <li>Crew memberships: joining a driving group (Crew) makes your contributed distance and join date within that Crew visible to its other members. Public Crews are also discoverable by all users, showing their name, total distance, and member count.</li>
         </ul>
 
         <h3>d) Achievements &amp; Driving Statistics</h3>
         <p>To show you unlockable achievements (milestones), we automatically evaluate derived metrics from your driving history, for example your number of drives, total distance driven, top speed, or the duration of individual drives. These metrics and the achievements themselves are stored on your profile and are only visible to you.</p>
 
-        <h3>e) Motion Sensor (Accelerometer)</h3>
-        <p>During Free Drives, we additionally evaluate your device's accelerometer to compute driving-style metrics (e.g. acceleration/braking behavior, number of corners, a rough "calm" or "dynamic" assessment) and to detect GPS inaccuracies while stationary. Only these computed metrics are stored, never raw sensor data. Unlike GPS, accessing the motion sensor does not require a separate permission.</p>
+        <h3>e) Motion Sensors (Accelerometer, Gyroscope, Barometer)</h3>
+        <p>During Free Drives, we additionally evaluate your device's accelerometer and gyroscope to compute driving-style metrics (e.g. acceleration/braking behavior, number of corners, a rough "calm" or "dynamic" assessment) and to detect GPS inaccuracies while stationary. If your device has a barometer, we also use it to determine elevation gain more precisely than GPS alone. Only these computed metrics are stored, never raw sensor data. Unlike GPS, accessing these motion sensors does not require a separate permission.</p>
+
+        <h3>f) Exploration Map ("Where I've Been")</h3>
+        <p>From the coordinates of all your recorded drives, navigations, and timed route runs, we automatically calculate which approximately 1×1 km map tiles you have already driven through. This overview is shown as your personal exploration map on the Map screen and in your recap, and is visible only to you.</p>
+
+        <h3>g) Live Location Sharing with Friends</h3>
+        <p>You can optionally enable live location sharing in the map settings. While this feature is turned on, your current position (latitude, longitude, heading, and speed) is continuously transmitted to all your confirmed friends during an active drive recording (Navigation, Free Drive, or a timed route run). Access is restricted to your friends on the server side. Your shared position is automatically removed as soon as the drive ends or you turn the feature off again; it is never permanently stored or archived.</p>
 
         <div class="legal-callout info">
             <h3>3. Location Data &amp; GPS (Core Feature)</h3>
@@ -86,7 +93,7 @@
             <p style="margin-bottom:0;"><strong>For what purpose?</strong> To measure your driving time, verify checkpoints, create speed diagrams (telemetry), and, in the "Free Drive" function, to record the entire distance you have covered. This precise route data is stored on our servers, provided you actively choose to save it at the end of the drive.</p>
         </div>
 
-        <h2>4. Use of Third-Party Providers (Firebase &amp; Mapbox)</h2>
+        <h2>4. Use of Third-Party Providers (Firebase, Mapbox, Open-Meteo &amp; GitHub/jsDelivr)</h2>
         <p>To provide the app, we use services from external providers:</p>
 
         <h3>a) Google Firebase (Database &amp; Login)</h3>
@@ -102,12 +109,20 @@
         <h3>b) Mapbox (Maps &amp; Navigation)</h3>
         <p>For the visual representation of maps, routes, and navigation, we use the Mapbox API (Mapbox, Inc., 740 15th Street NW, 5th Floor, Washington DC 20005, USA). When you open the map in the app, a direct connection to Mapbox's servers is established. For technical reasons, your IP address and location data are transmitted to Mapbox to load the map material onto your device. As Mapbox is a US company, this may involve a transfer of your data to the USA. This transfer relies on the EU Standard Contractual Clauses or, where certified, the EU-US Data Privacy Framework, to ensure an adequate level of data protection. Mapbox Privacy Policy: <a href="https://www.mapbox.com/legal/privacy" target="_blank">https://www.mapbox.com/legal/privacy</a></p>
 
+        <h3>c) Open-Meteo (Weather Data)</h3>
+        <p>To display current weather information and a forecast, we query the Open-Meteo weather API. Only the coordinates of the relevant location are transmitted - no user identifier, no other personal data. The service is used anonymously, without an API key. More information: <a href="https://open-meteo.com/en/terms" target="_blank">https://open-meteo.com/en/terms</a></p>
+
+        <h3>d) GitHub / jsDelivr (Brand Logos)</h3>
+        <p>If you have set a brand for a vehicle in your garage, we load the matching manufacturer logo once from a public, free delivery service (jsDelivr, which serves content hosted on GitHub) and then store it permanently on your device. For technical reasons, your IP address is transmitted to jsDelivr, but no other personal data. The logos themselves are trademarks of their respective vehicle manufacturers.</p>
+
         <h2>5. Visibility of Your Data</h2>
         <p>You control who sees your data:</p>
         <ul>
             <li><strong>Profile &amp; Garage:</strong> Visible to other users by default. You can adjust or delete this data at any time.</li>
             <li><strong>Drive Times, Telemetry &amp; Free Drives:</strong> Can be individually marked as "Public", "Friends Only", or "Private" for each drive.</li>
             <li><strong>Friends:</strong> If you accept a friend request, the other user gains access to the content you have shared with "Friends".</li>
+            <li><strong>Crew:</strong> Your membership, contributed distance, and join date are visible to other members of the same Crew. Public Crews are also discoverable by all users, showing their name, total distance, and member count.</li>
+            <li><strong>Live Location:</strong> Only visible if you have actively turned sharing on - then to all your friends, only while a drive recording is active.</li>
         </ul>
 
         <h2>6. Legal Basis</h2>

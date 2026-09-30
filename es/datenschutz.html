@@ -38,7 +38,7 @@
 <div class="wrap legal-page">
     <div class="legal-card">
         <h1>Política de Privacidad</h1>
-        <span class="legal-stamp">Última actualización: 24 de agosto de 2026</span>
+        <span class="legal-stamp">Última actualización: 30 de septiembre de 2026</span>
 
         <p>Gracias por tu interés en nuestra aplicación "Cruising". La protección de tu privacidad es muy importante para nosotros. A continuación te informamos detalladamente sobre cómo tratamos tus datos.</p>
 
@@ -59,7 +59,7 @@
         <p>Al registrarte, almacenamos tu dirección de correo electrónico, un nombre de usuario elegido (Nombre para mostrar), tu foto de perfil y tu ID de usuario interno.</p>
 
         <h3>b) Información del vehículo (Garaje virtual)</h3>
-        <p>Almacenamos información sobre los vehículos que añades en la aplicación (modelo, potencia, año, tipo de tracción, fotos). Estos datos sirven para tus estadísticas personales y se muestran a otros usuarios en tu perfil, a menos que lo hayas restringido.</p>
+        <p>Almacenamos información sobre los vehículos que añades en la aplicación (marca, modelo, potencia, año, tipo de tracción, fotos). Estos datos sirven para tus estadísticas personales y se muestran a otros usuarios en tu perfil, a menos que lo hayas restringido.</p>
 
         <h3>c) Contenido generado por el usuario y comunidad</h3>
         <p>Datos que creas activamente:</p>
@@ -70,13 +70,20 @@
             <li>Informes (Reports) sobre otros usuarios o contenidos.</li>
             <li>Solicitudes de cambios en rutas (nota de texto libre sobre qué debe modificarse).</li>
             <li>Salidas en grupo planificadas, incluyendo punto de encuentro, fecha, usuarios invitados y sus confirmaciones o rechazos.</li>
+            <li>Membresías en Crews: al unirte a un grupo de conducción (Crew), tus kilómetros aportados y tu fecha de ingreso en dicha Crew son visibles para los demás miembros. Las Crews públicas son además localizables por todos los usuarios, mostrando su nombre, kilómetros totales y número de miembros.</li>
         </ul>
 
         <h3>d) Logros y estadísticas de conducción</h3>
         <p>Para mostrarte logros desbloqueables (hitos), evaluamos automáticamente indicadores derivados de tu historial de conducción, por ejemplo tu número de viajes, los kilómetros totales recorridos, tu velocidad máxima o la duración de viajes individuales. Estos indicadores, así como los logros desbloqueados, se almacenan en tu perfil y solo son visibles para ti.</p>
 
-        <h3>e) Sensor de movimiento (Acelerómetro)</h3>
-        <p>Durante las Conducciones libres, evaluamos adicionalmente el acelerómetro de tu dispositivo para calcular indicadores de estilo de conducción (por ejemplo, comportamiento de aceleración/frenado, número de curvas, una valoración aproximada de "tranquilo" o "dinámico") y para detectar imprecisiones del GPS en parado. Solo se almacenan estos indicadores calculados, nunca los datos brutos del sensor. A diferencia del GPS, el acceso al sensor de movimiento no requiere un permiso independiente.</p>
+        <h3>e) Sensores de movimiento (Acelerómetro, giroscopio, barómetro)</h3>
+        <p>Durante las Conducciones libres, evaluamos adicionalmente el acelerómetro y el giroscopio de tu dispositivo para calcular indicadores de estilo de conducción (por ejemplo, comportamiento de aceleración/frenado, número de curvas, una valoración aproximada de "tranquilo" o "dinámico") y para detectar imprecisiones del GPS en parado. Si tu dispositivo dispone de un barómetro, lo utilizamos además para determinar el desnivel recorrido con mayor precisión que solo con GPS. Solo se almacenan estos indicadores calculados, nunca los datos brutos de los sensores. A diferencia del GPS, el acceso a estos sensores de movimiento no requiere un permiso independiente.</p>
+
+        <h3>f) Mapa de exploración ("Dónde he estado")</h3>
+        <p>A partir de las coordenadas de todos tus viajes, navegaciones y rutas con toma de tiempo registrados, calculamos automáticamente qué casillas del mapa de aproximadamente 1×1 km ya has recorrido. Esta visión general se muestra como tu mapa de exploración personal en el mapa y en tu resumen, y es visible únicamente para ti.</p>
+
+        <h3>g) Compartir ubicación en vivo con amigos</h3>
+        <p>Puedes activar opcionalmente el compartir tu ubicación en vivo en los ajustes del mapa. Mientras esta función esté activada, tu posición actual (latitud, longitud, rumbo y velocidad) se transmite de forma continua a todos tus amigos confirmados durante una grabación de viaje activa (Navegación, Conducción libre o una ruta con toma de tiempo). El acceso está restringido a tus amigos en el lado del servidor. Tu posición compartida se elimina automáticamente en cuanto finaliza el viaje o vuelves a desactivar la función; nunca se almacena ni archiva de forma permanente.</p>
 
         <div class="legal-callout info">
             <h3>3. Datos de ubicación y GPS (Función principal)</h3>
@@ -86,7 +93,7 @@
             <p style="margin-bottom:0;"><strong>¿Para qué?</strong> Para medir tu tiempo de conducción, verificar puntos de control, crear diagramas de velocidad (telemetría) y, en la función "Conducción libre", registrar toda la distancia recorrida. Estos datos precisos de la ruta se almacenan en nuestros servidores, siempre que decidas guardarlos activamente al final del viaje.</p>
         </div>
 
-        <h2>4. Uso de proveedores de terceros (Firebase y Mapbox)</h2>
+        <h2>4. Uso de proveedores de terceros (Firebase, Mapbox, Open-Meteo y GitHub/jsDelivr)</h2>
         <p>Para proporcionar la aplicación, utilizamos servicios de proveedores externos:</p>
 
         <h3>a) Google Firebase (Base de datos e Inicio de sesión)</h3>
@@ -102,12 +109,20 @@
         <h3>b) Mapbox (Material cartográfico y navegación)</h3>
         <p>Para la representación visual de mapas, rutas y navegación, utilizamos la API de Mapbox (Mapbox, Inc., 740 15th Street NW, 5th Floor, Washington DC 20005, EE. UU.). Cuando abres el mapa en la aplicación, se establece una conexión directa con los servidores de Mapbox. Por razones técnicas, tu dirección IP y tus datos de ubicación se transmiten a Mapbox para cargar el material del mapa en tu dispositivo. Como Mapbox es una empresa estadounidense, esto puede implicar una transferencia de tus datos a EE. UU. Dicha transferencia se basa en las Cláusulas Contractuales Tipo de la UE o, si está certificada, en el Marco de Privacidad de Datos UE-EE. UU., para garantizar un nivel adecuado de protección de datos. Política de privacidad de Mapbox: <a href="https://www.mapbox.com/legal/privacy" target="_blank">https://www.mapbox.com/legal/privacy</a></p>
 
+        <h3>c) Open-Meteo (Datos meteorológicos)</h3>
+        <p>Para mostrar información meteorológica actual y una previsión, consultamos la API meteorológica de Open-Meteo. Solo se transmiten las coordenadas del lugar correspondiente, sin identificador de usuario ni ningún otro dato personal. El servicio se utiliza de forma anónima, sin clave API. Más información: <a href="https://open-meteo.com/en/terms" target="_blank">https://open-meteo.com/en/terms</a></p>
+
+        <h3>d) GitHub / jsDelivr (Logotipos de marca)</h3>
+        <p>Si has indicado una marca para un vehículo en tu garaje, cargamos una única vez el logotipo del fabricante correspondiente desde un servicio de entrega público y gratuito (jsDelivr, que distribuye contenido alojado en GitHub) y lo almacenamos después de forma permanente en tu dispositivo. Por razones técnicas, tu dirección IP se transmite a jsDelivr, pero ningún otro dato personal. Los logotipos en sí son marcas registradas de los respectivos fabricantes de vehículos.</p>
+
         <h2>5. Visibilidad de tus datos</h2>
         <p>Tú controlas quién ve tus datos:</p>
         <ul>
             <li><strong>Perfil y Garaje:</strong> Visible de forma predeterminada para otros usuarios. Puedes ajustar o eliminar estos datos en cualquier momento.</li>
             <li><strong>Tiempos de conducción, Telemetría y Excursiones:</strong> Pueden marcarse individualmente como "Público", "Solo amigos" o "Privado" para cada viaje.</li>
             <li><strong>Amigos:</strong> Si aceptas una solicitud de amistad, el otro usuario obtiene acceso a tu contenido compartido con "Amigos".</li>
+            <li><strong>Crew:</strong> Tu membresía, los kilómetros aportados y tu fecha de ingreso son visibles para los demás miembros de la misma Crew. Las Crews públicas son además localizables por todos los usuarios, mostrando su nombre, kilómetros totales y número de miembros.</li>
+            <li><strong>Ubicación en vivo:</strong> Solo visible si has activado el compartir de forma explícita, y en ese caso solo para tus amigos, únicamente mientras haya una grabación de viaje activa.</li>
         </ul>
 
         <h2>6. Base legal</h2>

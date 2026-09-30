@@ -38,7 +38,7 @@
 <div class="wrap legal-page">
     <div class="legal-card">
         <h1>Datenschutzerklärung</h1>
-        <span class="legal-stamp">Stand: 24. August 2026</span>
+        <span class="legal-stamp">Stand: 30. September 2026</span>
 
         <p>Wir freuen uns über Ihr Interesse an unserer App "Cruising". Der Schutz Ihrer Privatsphäre ist für uns sehr wichtig. Nachstehend informieren wir Sie ausführlich über den Umgang mit Ihren Daten.</p>
 
@@ -58,7 +58,7 @@
         <p>Wenn Sie sich registrieren, speichern wir Ihre E-Mail-Adresse, einen gewählten Benutzernamen (Display Name), Ihr Profilbild und Ihre interne User-ID.</p>
 
         <h3>b) Fahrzeuginformationen (Virtuelle Garage)</h3>
-        <p>Wir speichern Informationen zu den Fahrzeugen, die Sie in der App anlegen (Modell, Leistung, Baujahr, Antriebsart, Fotos). Diese Daten dienen der persönlichen Statistik und werden anderen Nutzern in Ihrem Profil angezeigt, sofern Sie dies nicht eingeschränkt haben.</p>
+        <p>Wir speichern Informationen zu den Fahrzeugen, die Sie in der App anlegen (Marke, Modell, Leistung, Baujahr, Antriebsart, Fotos). Diese Daten dienen der persönlichen Statistik und werden anderen Nutzern in Ihrem Profil angezeigt, sofern Sie dies nicht eingeschränkt haben.</p>
 
         <h3>c) Nutzergenerierte Inhalte & Community</h3>
         <p>Daten, die Sie aktiv erstellen:</p>
@@ -69,13 +69,20 @@
             <li>Meldungen (Reports) über andere Nutzer oder Inhalte.</li>
             <li>Änderungsanfragen zu Strecken (Freitext-Hinweis, was an einer Route angepasst werden soll).</li>
             <li>Geplante gemeinsame Ausfahrten, inklusive Treffpunkt, Termin, eingeladener Nutzer und deren Zu- oder Absagen.</li>
+            <li>Crew-Mitgliedschaften: Beitritt zu einer Fahrgruppe (Crew), Ihre dort beigetragenen Kilometer und Ihr Beitrittsdatum sind für andere Mitglieder derselben Crew sichtbar. Öffentliche Crews sind zudem mit Name, Gesamt-Kilometern und Mitgliederzahl für alle Nutzer auffindbar.</li>
         </ul>
 
         <h3>d) Erfolge & Fahrstatistiken</h3>
         <p>Um Ihnen freischaltbare Erfolge (Meilensteine) anzuzeigen, werten wir automatisiert abgeleitete Kennzahlen aus Ihrer Fahrhistorie aus, zum Beispiel die Anzahl Ihrer Fahrten, insgesamt gefahrene Kilometer, Ihre Höchstgeschwindigkeit oder die Dauer einzelner Fahrten. Diese Kennzahlen sowie die freigeschalteten Erfolge selbst werden auf Ihrem Profil gespeichert und sind nur für Sie sichtbar.</p>
 
-        <h3>e) Bewegungssensor (Beschleunigungssensor)</h3>
-        <p>Bei Freien Fahrten werten wir zusätzlich den Beschleunigungssensor Ihres Geräts aus, um Fahrstil-Kennzahlen zu berechnen (z.B. Beschleunigungs-/Bremsverhalten, Kurvenanzahl, eine grobe Einschätzung "ruhig" oder "dynamisch") und um GPS-Ungenauigkeiten im Stand zu erkennen. Gespeichert werden ausschließlich diese berechneten Kennzahlen, keine Rohdaten des Sensors. Der Zugriff auf den Bewegungssensor erfordert anders als bei GPS keine gesonderte Berechtigung.</p>
+        <h3>e) Bewegungssensoren (Beschleunigung, Gyroskop, Luftdruck)</h3>
+        <p>Bei Freien Fahrten werten wir zusätzlich Beschleunigungssensor und Gyroskop Ihres Geräts aus, um Fahrstil-Kennzahlen zu berechnen (z.B. Beschleunigungs-/Bremsverhalten, Kurvenanzahl, eine grobe Einschätzung "ruhig" oder "dynamisch") und um GPS-Ungenauigkeiten im Stand zu erkennen. Sofern Ihr Gerät über einen Luftdrucksensor (Barometer) verfügt, nutzen wir diesen zusätzlich, um zurückgelegte Höhenmeter präziser zu bestimmen als über GPS allein. Gespeichert werden ausschließlich diese berechneten Kennzahlen, keine Rohdaten der Sensoren. Der Zugriff auf diese Bewegungssensoren erfordert anders als bei GPS keine gesonderte Berechtigung.</p>
+
+        <h3>f) Erkundungskarte ("Wo war ich schon")</h3>
+        <p>Aus den Koordinaten all Ihrer aufgezeichneten Fahrten, Navigationen und Strecken mit Zeitmessung berechnen wir automatisch, welche ca. 1×1 km großen Kartenkacheln Sie bereits befahren haben. Diese Übersicht wird als persönliche Erkundungskarte auf der Karte und im Rückblick angezeigt und ist ausschließlich für Sie selbst sichtbar.</p>
+
+        <h3>g) Live-Standort-Teilen mit Freunden</h3>
+        <p>Sie können in den Karteneinstellungen optional das Teilen Ihres Live-Standorts aktivieren. Ist diese Funktion eingeschaltet, wird Ihre aktuelle Position (Breitengrad, Längengrad, Richtung und Geschwindigkeit) während einer aktiven Fahrtaufzeichnung (Navigation, Freie Fahrt oder einer Strecke mit Zeitmessung) laufend an alle Ihre bestätigten Freunde übermittelt. Der Zugriff ist serverseitig auf Ihre Freunde beschränkt. Ihre geteilte Position wird automatisch entfernt, sobald die Fahrt endet oder Sie die Funktion wieder ausschalten; sie wird zu keinem Zeitpunkt dauerhaft gespeichert oder archiviert.</p>
 
         <div class="legal-callout info">
             <h3>3. Standortdaten & GPS (Kernfunktion)</h3>
@@ -85,7 +92,7 @@
             <p style="margin-bottom:0;"><strong>Wofür?</strong> Um Ihre Fahrzeit zu messen, Checkpoints zu verifizieren, Geschwindigkeitsdiagramme (Telemetrie) zu erstellen und bei der Funktion "Freie Fahrt" die gesamte von Ihnen zurückgelegte Strecke aufzuzeichnen. Diese genauen Streckendaten werden auf unseren Servern gespeichert, sofern Sie sich am Ende der Fahrt aktiv für eine Speicherung entscheiden.</p>
         </div>
 
-        <h2>4. Nutzung von Drittanbietern (Firebase & Mapbox)</h2>
+        <h2>4. Nutzung von Drittanbietern (Firebase, Mapbox, Open-Meteo & GitHub/jsDelivr)</h2>
         <p>Um die App bereitzustellen, greifen wir auf Dienste externer Anbieter zurück:</p>
 
         <h3>a) Google Firebase (Datenbank & Login)</h3>
@@ -101,12 +108,20 @@
         <h3>b) Mapbox (Kartenmaterial & Navigation)</h3>
         <p>Zur visuellen Darstellung der Karten, Routen und für die Navigation nutzen wir die API von Mapbox (Mapbox, Inc., 740 15th Street NW, 5th Floor, Washington DC 20005, USA). Wenn Sie die Karte in der App öffnen, wird eine direkte Verbindung zu den Servern von Mapbox aufgebaut. Hierbei werden technisch bedingt Ihre IP-Adresse sowie Positionsdaten an Mapbox übertragen, um das Kartenmaterial auf Ihr Gerät zu laden. Da es sich um ein US-amerikanisches Unternehmen handelt, kann dabei eine Übermittlung Ihrer Daten in die USA stattfinden. Diese stützt sich auf die EU-Standardvertragsklauseln beziehungsweise, sofern zertifiziert, auf das EU-US Data Privacy Framework, um ein angemessenes Datenschutzniveau sicherzustellen. Datenschutzerklärung von Mapbox: <a href="https://www.mapbox.com/legal/privacy" target="_blank">https://www.mapbox.com/legal/privacy</a></p>
 
+        <h3>c) Open-Meteo (Wetterdaten)</h3>
+        <p>Um aktuelle Wetterinformationen und eine Vorhersage anzuzeigen, fragen wir die Wetter-API von Open-Meteo ab. Dabei werden ausschließlich die Koordinaten des jeweiligen Ortes übertragen - keine Nutzerkennung, keine sonstigen personenbezogenen Daten. Der Dienst wird ohne API-Schlüssel und anonym genutzt. Weitere Informationen: <a href="https://open-meteo.com/en/terms" target="_blank">https://open-meteo.com/en/terms</a></p>
+
+        <h3>d) GitHub / jsDelivr (Marken-Logos)</h3>
+        <p>Haben Sie bei einem Fahrzeug in Ihrer Garage eine Marke hinterlegt, laden wir das passende Herstellerlogo einmalig von einem öffentlichen, kostenlosen Auslieferungsdienst (jsDelivr, der Inhalte von GitHub bereitstellt) und speichern es danach dauerhaft lokal auf Ihrem Gerät. Dabei wird technisch bedingt Ihre IP-Adresse an jsDelivr übertragen, jedoch keine weiteren personenbezogenen Daten. Die Logos selbst sind Marken der jeweiligen Fahrzeughersteller.</p>
+
         <h2>5. Sichtbarkeit Ihrer Daten</h2>
         <p>Sie kontrollieren, wer Ihre Daten sieht:</p>
         <ul>
             <li><strong>Profil & Garage:</strong> Standardmäßig für andere Nutzer sichtbar. Sie können diese Daten jederzeit anpassen oder löschen.</li>
             <li><strong>Fahrtzeiten, Telemetrie & Ausflüge:</strong> Können pro Fahrt individuell als "Öffentlich", "Freunde" oder "Privat" markiert werden.</li>
             <li><strong>Freunde:</strong> Wenn Sie eine Freundschaftsanfrage annehmen, erhält der andere Nutzer Zugriff auf Ihre für "Freunde" freigegebenen Inhalte.</li>
+            <li><strong>Crew:</strong> Ihre Mitgliedschaft, beigetragenen Kilometer und Ihr Beitrittsdatum sind für andere Mitglieder derselben Crew sichtbar. Öffentliche Crews sind zusätzlich mit Namen, Gesamt-Kilometern und Mitgliederzahl für alle Nutzer auffindbar.</li>
+            <li><strong>Live-Standort:</strong> Nur sichtbar, wenn Sie das Teilen aktiv eingeschaltet haben - dann für alle Ihre Freunde, ausschließlich während einer laufenden Fahrtaufzeichnung.</li>
         </ul>
 
         <h2>6. Rechtsgrundlage</h2>

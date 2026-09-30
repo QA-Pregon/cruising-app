@@ -38,7 +38,7 @@
 <div class="wrap legal-page">
     <div class="legal-card">
         <h1>Polityka Prywatności</h1>
-        <span class="legal-stamp">Ostatnia aktualizacja: 24 sierpnia 2026</span>
+        <span class="legal-stamp">Ostatnia aktualizacja: 30 września 2026</span>
 
         <p>Dziękujemy za zainteresowanie naszą aplikacją "Cruising". Ochrona Twojej prywatności jest dla nas bardzo ważna. Poniżej przedstawiamy szczegółowe informacje o tym, jak postępujemy z Twoimi danymi.</p>
 
@@ -59,7 +59,7 @@
         <p>Podczas rejestracji przechowujemy Twój adres e-mail, wybraną nazwę użytkownika (Display Name), zdjęcie profilowe oraz wewnętrzny identyfikator użytkownika (User ID).</p>
 
         <h3>b) Informacje o pojeździe (Wirtualny Garaż)</h3>
-        <p>Przechowujemy informacje o pojazdach, które dodajesz w aplikacji (model, moc, rok, typ napędu, zdjęcia). Dane te służą do Twoich osobistych statystyk i są wyświetlane innym użytkownikom na Twoim profilu, chyba że to ograniczysz.</p>
+        <p>Przechowujemy informacje o pojazdach, które dodajesz w aplikacji (marka, model, moc, rok, typ napędu, zdjęcia). Dane te służą do Twoich osobistych statystyk i są wyświetlane innym użytkownikom na Twoim profilu, chyba że to ograniczysz.</p>
 
         <h3>c) Treści generowane przez użytkowników i społeczność</h3>
         <p>Dane, które aktywnie tworzysz:</p>
@@ -70,13 +70,20 @@
             <li>Zgłoszenia (Raporty) dotyczące innych użytkowników lub treści.</li>
             <li>Zgłoszenia zmian w trasach (dowolna notatka opisująca, co należy zmienić).</li>
             <li>Zaplanowane wspólne przejazdy, w tym miejsce spotkania, termin, zaproszeni użytkownicy oraz ich potwierdzenia lub odmowy.</li>
+            <li>Członkostwo w Crew: po dołączeniu do grupy jazdy (Crew) Twój wniesiony dystans oraz data dołączenia do tej Crew są widoczne dla pozostałych członków. Publiczne Crew są dodatkowo widoczne dla wszystkich użytkowników wraz z nazwą, łącznym dystansem i liczbą członków.</li>
         </ul>
 
         <h3>d) Osiągnięcia i statystyki jazdy</h3>
         <p>Aby wyświetlić Ci odblokowywalne osiągnięcia (kamienie milowe), automatycznie analizujemy wskaźniki wyprowadzone z Twojej historii jazdy, na przykład liczbę Twoich przejazdów, łączną liczbę przejechanych kilometrów, Twoją maksymalną prędkość lub czas trwania poszczególnych przejazdów. Te wskaźniki oraz same odblokowane osiągnięcia są zapisywane na Twoim profilu i widoczne tylko dla Ciebie.</p>
 
-        <h3>e) Czujnik ruchu (akcelerometr)</h3>
-        <p>Podczas Swobodnych jazd dodatkowo analizujemy akcelerometr Twojego urządzenia, aby obliczyć wskaźniki stylu jazdy (np. zachowanie przy przyspieszaniu/hamowaniu, liczbę zakrętów, zgrubną ocenę "spokojnie" lub "dynamicznie") oraz wykryć niedokładności GPS podczas postoju. Zapisywane są wyłącznie te obliczone wskaźniki, nigdy surowe dane z czujnika. W przeciwieństwie do GPS dostęp do czujnika ruchu nie wymaga osobnego uprawnienia.</p>
+        <h3>e) Czujniki ruchu (akcelerometr, żyroskop, barometr)</h3>
+        <p>Podczas Swobodnych jazd dodatkowo analizujemy akcelerometr i żyroskop Twojego urządzenia, aby obliczyć wskaźniki stylu jazdy (np. zachowanie przy przyspieszaniu/hamowaniu, liczbę zakrętów, zgrubną ocenę "spokojnie" lub "dynamicznie") oraz wykryć niedokładności GPS podczas postoju. Jeśli Twoje urządzenie posiada barometr, wykorzystujemy go dodatkowo do dokładniejszego niż samo GPS określenia pokonanej różnicy wysokości. Zapisywane są wyłącznie te obliczone wskaźniki, nigdy surowe dane z czujników. W przeciwieństwie do GPS dostęp do tych czujników ruchu nie wymaga osobnego uprawnienia.</p>
+
+        <h3>f) Mapa eksploracji ("Gdzie już byłem")</h3>
+        <p>Na podstawie współrzędnych wszystkich Twoich zarejestrowanych przejazdów, nawigacji i tras z pomiarem czasu automatycznie obliczamy, które pola mapy o wielkości ok. 1×1 km już przejechałeś. Ten przegląd jest wyświetlany jako Twoja osobista mapa eksploracji na mapie i w podsumowaniu i jest widoczny wyłącznie dla Ciebie.</p>
+
+        <h3>g) Udostępnianie lokalizacji na żywo znajomym</h3>
+        <p>W ustawieniach mapy możesz opcjonalnie włączyć udostępnianie swojej lokalizacji na żywo. Gdy ta funkcja jest włączona, Twoja aktualna pozycja (szerokość i długość geograficzna, kierunek oraz prędkość) jest na bieżąco przekazywana wszystkim Twoim potwierdzonym znajomym podczas aktywnego rejestrowania przejazdu (Nawigacja, Swobodna jazda lub trasa z pomiarem czasu). Dostęp jest ograniczony do Twoich znajomych po stronie serwera. Twoja udostępniana pozycja jest automatycznie usuwana, gdy tylko przejazd się zakończy lub ponownie wyłączysz tę funkcję; nigdy nie jest trwale zapisywana ani archiwizowana.</p>
 
         <div class="legal-callout info">
             <h3>3. Dane lokalizacyjne i GPS (Główna funkcja)</h3>
@@ -86,7 +93,7 @@
             <p style="margin-bottom:0;"><strong>W jakim celu?</strong> W celu pomiaru czasu jazdy, weryfikacji punktów kontrolnych, tworzenia diagramów prędkości (telemetrii) oraz, w funkcji "Swobodna jazda", do rejestrowania całej przebytej odległości. Te precyzyjne dane trasy są przechowywane na naszych serwerach, pod warunkiem, że aktywnie zdecydujesz się je zapisać na końcu jazdy.</p>
         </div>
 
-        <h2>4. Korzystanie z dostawców zewnętrznych (Firebase i Mapbox)</h2>
+        <h2>4. Korzystanie z dostawców zewnętrznych (Firebase, Mapbox, Open-Meteo i GitHub/jsDelivr)</h2>
         <p>W celu udostępniania aplikacji korzystamy z usług dostawców zewnętrznych:</p>
 
         <h3>a) Google Firebase (Baza danych i Logowanie)</h3>
@@ -102,12 +109,20 @@
         <h3>b) Mapbox (Materiały mapowe i Nawigacja)</h3>
         <p>Do wizualnej reprezentacji map, tras oraz do nawigacji używamy API od Mapbox (Mapbox, Inc., 740 15th Street NW, 5th Floor, Washington DC 20005, USA). Po otwarciu mapy w aplikacji nawiązywane jest bezpośrednie połączenie z serwerami Mapbox. Ze względów technicznych Twój adres IP i dane o lokalizacji są przesyłane do Mapbox w celu załadowania materiału mapowego na Twoje urządzenie. Ponieważ Mapbox jest firmą amerykańską, może to wiązać się z przekazaniem Twoich danych do USA. Takie przekazanie opiera się na standardowych klauzulach umownych UE lub, jeśli jest certyfikowane, na ramach ochrony danych UE-USA (Data Privacy Framework), aby zapewnić odpowiedni poziom ochrony danych. Polityka prywatności Mapbox: <a href="https://www.mapbox.com/legal/privacy" target="_blank">https://www.mapbox.com/legal/privacy</a></p>
 
+        <h3>c) Open-Meteo (Dane pogodowe)</h3>
+        <p>Aby wyświetlać aktualne informacje pogodowe i prognozę, odpytujemy API pogodowe Open-Meteo. Przesyłane są wyłącznie współrzędne danego miejsca - bez identyfikatora użytkownika i bez żadnych innych danych osobowych. Usługa jest wykorzystywana anonimowo, bez klucza API. Więcej informacji: <a href="https://open-meteo.com/en/terms" target="_blank">https://open-meteo.com/en/terms</a></p>
+
+        <h3>d) GitHub / jsDelivr (Logotypy marek)</h3>
+        <p>Jeśli podałeś markę pojazdu w swoim garażu, jednorazowo pobieramy pasujące logo producenta z publicznej, bezpłatnej usługi dostarczania treści (jsDelivr, która udostępnia treści hostowane na GitHub), a następnie zapisujemy je trwale na Twoim urządzeniu. Ze względów technicznych Twój adres IP jest przesyłany do jsDelivr, ale żadne inne dane osobowe. Same logotypy są znakami towarowymi odpowiednich producentów pojazdów.</p>
+
         <h2>5. Widoczność Twoich danych</h2>
         <p>Ty decydujesz, kto widzi Twoje dane:</p>
         <ul>
             <li><strong>Profil i Garaż:</strong> Domyślnie widoczne dla innych użytkowników. W każdej chwili możesz dostosować lub usunąć te dane.</li>
             <li><strong>Czasy przejazdów, Telemetria i Wycieczki:</strong> Mogą być indywidualnie oznaczone jako "Publiczne", "Tylko znajomi" lub "Prywatne" dla każdego przejazdu.</li>
             <li><strong>Znajomi:</strong> Jeśli zaakceptujesz zaproszenie do znajomych, drugi użytkownik zyska dostęp do treści, które udostępniłeś "Znajomym".</li>
+            <li><strong>Crew:</strong> Twoje członkostwo, wniesiony dystans oraz data dołączenia są widoczne dla pozostałych członków tej samej Crew. Publiczne Crew są dodatkowo widoczne dla wszystkich użytkowników wraz z nazwą, łącznym dystansem i liczbą członków.</li>
+            <li><strong>Lokalizacja na żywo:</strong> Widoczna tylko wtedy, gdy aktywnie włączyłeś udostępnianie - wówczas dla wszystkich Twoich znajomych, wyłącznie podczas aktywnego rejestrowania przejazdu.</li>
         </ul>
 
         <h2>6. Podstawa prawna</h2>
