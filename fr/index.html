@@ -7,6 +7,7 @@
     <meta name="description" content="Cruising enregistre chaque trajet, du meilleur temps sur votre circuit habituel à la balade sans destination. Itinéraires, sorties de groupe, succès et une communauté de vrais passionnés.">
     <link rel="icon" type="image/png" href="/assets/app-icon.png">
     <script src="/assets/lang.js"></script>
+    <script src="/assets/waitlist.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -338,10 +339,11 @@
         <h2 class="section-title">Prêt pour le drapeau de départ ?</h2>
         <p class="section-sub">Le développement bat son plein. Inscrivez-vous et nous vous préviendrons dès que c'est prêt.</p>
 
-        <div class="waitlist-form">
-            <input type="email" class="waitlist-input" placeholder="Votre adresse Gmail" disabled>
-            <button class="btn btn-primary" onclick="alert('La liste d\'attente ouvre bientôt ! Repassez très vite.')">Prévenez-moi</button>
+        <div class="waitlist-form" data-soon="La liste d&#x27;attente ouvre bientôt ! Repassez très vite." data-invalid="Veuillez saisir une adresse Gmail se terminant par @gmail.com.">
+            <input type="email" id="waitlist-email" class="waitlist-input" autocomplete="email" inputmode="email" placeholder="Votre adresse Gmail" disabled>
+            <button class="btn btn-primary" onclick="waitlistSubmit(this)">Prévenez-moi</button>
         </div>
+        <div id="waitlist-error" role="alert" hidden style="color:#ff8a80;font-family:var(--font-mono);font-size:0.78rem;margin-top:12px;"></div>
         <div class="waitlist-note" style="margin-bottom:8px;">// Réservé aux utilisateurs Android. Vous avez besoin d'une adresse Gmail (compte Google), car l'accès passe par Google Play.</div>
         <div class="waitlist-note">// L'inscription ouvre bientôt</div>
     </div>

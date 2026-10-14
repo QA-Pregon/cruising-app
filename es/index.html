@@ -7,6 +7,7 @@
     <meta name="description" content="Cruising registra cada trayecto, desde tu mejor tiempo hasta una salida sin destino. Rutas, salidas en grupo, logros y una comunidad de auténticos apasionados del motor.">
     <link rel="icon" type="image/png" href="/assets/app-icon.png">
     <script src="/assets/lang.js"></script>
+    <script src="/assets/waitlist.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -338,10 +339,11 @@
         <h2 class="section-title">¿Listo para la bandera de salida?</h2>
         <p class="section-sub">El desarrollo va a toda máquina. Apúntate y te avisaremos en cuanto esté listo.</p>
 
-        <div class="waitlist-form">
-            <input type="email" class="waitlist-input" placeholder="Tu dirección de Gmail" disabled>
-            <button class="btn btn-primary" onclick="alert('¡La lista de espera abre muy pronto! Vuelve a pasarte en breve.')">Avísame</button>
+        <div class="waitlist-form" data-soon="¡La lista de espera abre muy pronto! Vuelve a pasarte en breve." data-invalid="Introduce una dirección de Gmail que termine en @gmail.com.">
+            <input type="email" id="waitlist-email" class="waitlist-input" autocomplete="email" inputmode="email" placeholder="Tu dirección de Gmail" disabled>
+            <button class="btn btn-primary" onclick="waitlistSubmit(this)">Avísame</button>
         </div>
+        <div id="waitlist-error" role="alert" hidden style="color:#ff8a80;font-family:var(--font-mono);font-size:0.78rem;margin-top:12px;"></div>
         <div class="waitlist-note" style="margin-bottom:8px;">// Solo para usuarios de Android. Necesitas una dirección de Gmail (cuenta de Google), porque el acceso se gestiona a través de Google Play.</div>
         <div class="waitlist-note">// El registro abre muy pronto</div>
     </div>

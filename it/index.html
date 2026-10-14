@@ -7,6 +7,7 @@
     <meta name="description" content="Cruising registra ogni viaggio, dal tuo miglior tempo a un'uscita senza meta. Percorsi, uscite di gruppo, obiettivi e una community di veri appassionati.">
     <link rel="icon" type="image/png" href="/assets/app-icon.png">
     <script src="/assets/lang.js"></script>
+    <script src="/assets/waitlist.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -338,10 +339,11 @@
         <h2 class="section-title">Pronto per la bandiera di partenza?</h2>
         <p class="section-sub">Lo sviluppo procede a pieno ritmo. Iscriviti e ti avviseremo appena è pronto.</p>
 
-        <div class="waitlist-form">
-            <input type="email" class="waitlist-input" placeholder="Il tuo indirizzo Gmail" disabled>
-            <button class="btn btn-primary" onclick="alert('La lista d\'attesa apre a breve! Torna a trovarci presto.')">Avvisami</button>
+        <div class="waitlist-form" data-soon="La lista d&#x27;attesa apre a breve! Torna a trovarci presto." data-invalid="Inserisci un indirizzo Gmail che termini con @gmail.com.">
+            <input type="email" id="waitlist-email" class="waitlist-input" autocomplete="email" inputmode="email" placeholder="Il tuo indirizzo Gmail" disabled>
+            <button class="btn btn-primary" onclick="waitlistSubmit(this)">Avvisami</button>
         </div>
+        <div id="waitlist-error" role="alert" hidden style="color:#ff8a80;font-family:var(--font-mono);font-size:0.78rem;margin-top:12px;"></div>
         <div class="waitlist-note" style="margin-bottom:8px;">// Solo per utenti Android. Serve un indirizzo Gmail (account Google), perché l'accesso avviene tramite Google Play.</div>
         <div class="waitlist-note">// L'iscrizione apre a breve</div>
     </div>

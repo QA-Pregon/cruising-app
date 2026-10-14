@@ -7,6 +7,7 @@
     <meta name="description" content="Cruising rejestruje każdą jazdę, od Twojego najlepszego czasu po wypad bez celu. Trasy, wspólne wyjazdy, osiągnięcia i społeczność prawdziwych pasjonatów motoryzacji.">
     <link rel="icon" type="image/png" href="/assets/app-icon.png">
     <script src="/assets/lang.js"></script>
+    <script src="/assets/waitlist.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -338,10 +339,11 @@
         <h2 class="section-title">Gotowy na flagę startową?</h2>
         <p class="section-sub">Prace nad rozwojem trwają pełną parą. Zapisz się, a damy Ci znać, gdy tylko będzie gotowe.</p>
 
-        <div class="waitlist-form">
-            <input type="email" class="waitlist-input" placeholder="Twój adres Gmail" disabled>
-            <button class="btn btn-primary" onclick="alert('Lista oczekujących otwiera się już wkrótce! Zajrzyj do nas ponownie niebawem.')">Powiadom mnie</button>
+        <div class="waitlist-form" data-soon="Lista oczekujących otwiera się już wkrótce! Zajrzyj do nas ponownie niebawem." data-invalid="Podaj adres Gmail kończący się na @gmail.com.">
+            <input type="email" id="waitlist-email" class="waitlist-input" autocomplete="email" inputmode="email" placeholder="Twój adres Gmail" disabled>
+            <button class="btn btn-primary" onclick="waitlistSubmit(this)">Powiadom mnie</button>
         </div>
+        <div id="waitlist-error" role="alert" hidden style="color:#ff8a80;font-family:var(--font-mono);font-size:0.78rem;margin-top:12px;"></div>
         <div class="waitlist-note" style="margin-bottom:8px;">// Tylko dla użytkowników Androida. Potrzebujesz adresu Gmail (konta Google), ponieważ dostęp działa przez Google Play.</div>
         <div class="waitlist-note">// Zapisy otwierają się już wkrótce</div>
     </div>

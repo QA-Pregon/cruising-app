@@ -7,6 +7,7 @@
     <meta name="description" content="Cruising zeichnet jede Fahrt auf, von der eigenen Bestzeit bis zum Ausflug ohne Ziel. Strecken, gemeinsame Ausfahrten, Erfolge und eine Community aus echten Petrolheads.">
     <link rel="icon" type="image/png" href="/assets/app-icon.png">
     <script src="/assets/lang.js"></script>
+    <script src="/assets/waitlist.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -571,10 +572,11 @@
         <h2 class="section-title">Bereit für den Startschuss?</h2>
         <p class="section-sub">Die Entwicklung läuft auf Hochtouren. Trag dich ein und wir melden uns, sobald es losgeht.</p>
 
-        <div class="waitlist-form">
-            <input type="email" class="waitlist-input" placeholder="Deine Gmail-Adresse" disabled>
-            <button class="btn btn-primary" onclick="alert('Die Warteliste öffnet in Kürze! Schau bald wieder vorbei.')">Benachrichtigt mich</button>
+        <div class="waitlist-form" data-soon="Die Warteliste öffnet in Kürze! Schau bald wieder vorbei." data-invalid="Bitte gib eine Gmail-Adresse ein, die auf @gmail.com endet.">
+            <input type="email" id="waitlist-email" class="waitlist-input" autocomplete="email" inputmode="email" placeholder="Deine Gmail-Adresse" disabled>
+            <button class="btn btn-primary" onclick="waitlistSubmit(this)">Benachrichtigt mich</button>
         </div>
+        <div id="waitlist-error" role="alert" hidden style="color:#ff8a80;font-family:var(--font-mono);font-size:0.78rem;margin-top:12px;"></div>
         <div class="waitlist-note" style="margin-bottom:8px;">// Nur für Android-Nutzer. Du brauchst dafür eine Gmail-Adresse (Google-Konto), weil der Zugang über Google Play läuft.</div>
         <div class="waitlist-note">// Anmeldung öffnet in Kürze</div>
     </div>
