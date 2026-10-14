@@ -1,10 +1,10 @@
 // Pruefung fuer das Wartelisten-Formular auf den Startseiten (alle 6 Sprachen).
-// Nur Gmail-Adressen: der Zugang laeuft ueber Google Play (Tests), siehe Hinweis
+// Nur Gmail-Adressen (@gmail.com oder @googlemail.com): der Zugang laeuft ueber Google Play (Tests), siehe Hinweis
 // unter dem Formular. Solange das Eingabefeld noch "disabled" ist, zeigt der
 // Knopf nur die "oeffnet in Kuerze"-Meldung - die Pruefung greift automatisch,
 // sobald das Feld freigeschaltet wird. Es wird nichts gesendet oder gespeichert.
 (function () {
-  var GMAIL = /^[a-z0-9._%+\-]+@gmail\.com$/;
+  var GMAIL = /^[a-z0-9._%+\-]+@(gmail|googlemail)\.com$/;
 
   window.isValidGmail = function (value) {
     return GMAIL.test(String(value || '').trim().toLowerCase());
