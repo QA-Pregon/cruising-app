@@ -1,15 +1,16 @@
 // Pruefung fuer das Wartelisten-Formular auf den Startseiten (alle 6 Sprachen).
-// Nur Gmail-Adressen (@gmail.com oder @googlemail.com): der Zugang laeuft ueber
-// Google Play (Tests), siehe Hinweis unter dem Formular. Solange das
+// Normale E-Mail-Pruefung. Fuer die Android-Tests muss die Adresse mit einem
+// Google-Konto verknuepft sein - das steht nur als Hinweis unter dem Formular,
+// es gibt bewusst keine Gmail-Pflicht. Solange das
 // Eingabefeld noch "disabled" ist, zeigt der Knopf nur die "oeffnet in
 // Kuerze"-Meldung direkt auf der Seite (kein Browser-Popup) - die Pruefung
 // greift automatisch, sobald das Feld freigeschaltet wird. Es wird nichts
 // gesendet oder gespeichert.
 (function () {
-  var GMAIL = /^[a-z0-9._%+\-]+@(gmail|googlemail)\.com$/;
+  var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-  window.isValidGmail = function (value) {
-    return GMAIL.test(String(value || '').trim().toLowerCase());
+  window.isValidEmail = function (value) {
+    return EMAIL.test(String(value || '').trim().toLowerCase());
   };
 
   window.waitlistSubmit = function (button) {
@@ -29,7 +30,7 @@
       showSoon();
       return;
     }
-    if (!window.isValidGmail(input.value)) {
+    if (!window.isValidEmail(input.value)) {
       status.hidden = true;
       error.textContent = form.getAttribute('data-invalid');
       error.hidden = false;
