@@ -300,6 +300,10 @@
         }
         .waitlist-input:focus { outline: none; border-color: var(--accent); }
         .waitlist-note { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-faint); margin-top: 16px; }
+        .waitlist-consent { display: flex; align-items: flex-start; gap: 10px; max-width: 460px; margin: 14px auto 0; text-align: left; font-size: 0.82rem; line-height: 1.45; color: var(--text-muted); }
+        .waitlist-consent input { margin-top: 3px; accent-color: var(--accent); flex-shrink: 0; }
+        .waitlist-consent a { color: var(--accent); }
+        .waitlist-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
         @media (max-width: 760px) {
             .hero-actions { flex-direction: column; align-items: stretch; }
@@ -574,14 +578,15 @@
         <h2 class="section-title">Ready for the starting flag?</h2>
         <p class="section-sub">Development is in full swing. Sign up and we'll let you know as soon as it's ready.</p>
 
-        <div class="waitlist-form" data-soon="The waitlist opens soon! Check back shortly." data-invalid="Please enter a valid email address.">
-            <input type="email" id="waitlist-email" class="waitlist-input" autocomplete="email" inputmode="email" placeholder="Your email address" disabled>
+        <div class="waitlist-form" data-consent="Please confirm your consent." data-sent="Thanks! You're on the list. We'll add you to the Android tests and get in touch." data-failed="That didn't work. Please try again later." data-soon="The waitlist opens soon! Check back shortly." data-invalid="Please enter a valid email address.">
+            <input type="email" id="waitlist-email" class="waitlist-input" autocomplete="email" inputmode="email" placeholder="Your email address">
             <button class="btn btn-primary" onclick="waitlistSubmit(this)">Notify me</button>
         </div>
+        <label class="waitlist-consent"><input type="checkbox" id="waitlist-consent"><span>I agree that my email address is stored and used to invite me to the Android tests. I can withdraw my consent at any time. More in the <a href="/en/datenschutz.html">Privacy Policy</a>.</span></label>
+        <div class="waitlist-hp" aria-hidden="true"><input type="text" id="waitlist-hp" name="website" tabindex="-1" autocomplete="off"></div>
         <div id="waitlist-status" role="status" hidden style="color:var(--accent);font-family:var(--font-mono);font-size:0.85rem;margin-top:12px;"></div>
         <div id="waitlist-error" role="alert" hidden style="color:#ff8a80;font-family:var(--font-mono);font-size:0.78rem;margin-top:12px;"></div>
         <div class="waitlist-note" style="margin-bottom:8px;">// Android users only. Your email address must be linked to a Google account so you can join the Android tests.</div>
-        <div class="waitlist-note">// Sign-up opens soon</div>
     </div>
 </section>
 

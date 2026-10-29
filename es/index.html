@@ -66,6 +66,10 @@
         .waitlist-input { flex: 1; padding: 14px 18px; border-radius: 10px; border: 1px solid var(--border-strong); background: var(--surface-2); color: var(--text); font-size: 1rem; font-family: var(--font-body); }
         .waitlist-input:focus { outline: none; border-color: var(--accent); }
         .waitlist-note { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-faint); margin-top: 16px; }
+        .waitlist-consent { display: flex; align-items: flex-start; gap: 10px; max-width: 460px; margin: 14px auto 0; text-align: left; font-size: 0.82rem; line-height: 1.45; color: var(--text-muted); }
+        .waitlist-consent input { margin-top: 3px; accent-color: var(--accent); flex-shrink: 0; }
+        .waitlist-consent a { color: var(--accent); }
+        .waitlist-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
         @media (max-width: 760px) {
             .hero-actions { flex-direction: column; align-items: stretch; }
             .telemetry-strip { grid-template-columns: repeat(2, 1fr); }
@@ -339,14 +343,15 @@
         <h2 class="section-title">¿Listo para la bandera de salida?</h2>
         <p class="section-sub">El desarrollo va a toda máquina. Apúntate y te avisaremos en cuanto esté listo.</p>
 
-        <div class="waitlist-form" data-soon="¡La lista de espera abre muy pronto! Vuelve a pasarte en breve." data-invalid="Introduce una dirección de correo electrónico válida.">
-            <input type="email" id="waitlist-email" class="waitlist-input" autocomplete="email" inputmode="email" placeholder="Tu dirección de correo electrónico" disabled>
+        <div class="waitlist-form" data-consent="Confirma tu consentimiento." data-sent="¡Gracias! Estás en la lista. Te añadiremos a las pruebas de Android y nos pondremos en contacto contigo." data-failed="No ha funcionado. Inténtalo de nuevo más tarde." data-soon="¡La lista de espera abre muy pronto! Vuelve a pasarte en breve." data-invalid="Introduce una dirección de correo electrónico válida.">
+            <input type="email" id="waitlist-email" class="waitlist-input" autocomplete="email" inputmode="email" placeholder="Tu dirección de correo electrónico">
             <button class="btn btn-primary" onclick="waitlistSubmit(this)">Avísame</button>
         </div>
+        <label class="waitlist-consent"><input type="checkbox" id="waitlist-consent"><span>Acepto que mi dirección de correo se guarde y se use para invitarme a las pruebas de Android. Puedo retirar mi consentimiento en cualquier momento. Más en la <a href="/es/datenschutz.html">Política de privacidad</a>.</span></label>
+        <div class="waitlist-hp" aria-hidden="true"><input type="text" id="waitlist-hp" name="website" tabindex="-1" autocomplete="off"></div>
         <div id="waitlist-status" role="status" hidden style="color:var(--accent);font-family:var(--font-mono);font-size:0.85rem;margin-top:12px;"></div>
         <div id="waitlist-error" role="alert" hidden style="color:#ff8a80;font-family:var(--font-mono);font-size:0.78rem;margin-top:12px;"></div>
         <div class="waitlist-note" style="margin-bottom:8px;">// Solo para usuarios de Android. La dirección de correo debe estar vinculada a una cuenta de Google para que puedas participar en las pruebas de Android.</div>
-        <div class="waitlist-note">// El registro abre muy pronto</div>
     </div>
 </section>
 
