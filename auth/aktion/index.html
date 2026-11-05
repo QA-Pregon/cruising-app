@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Cruising App</title>
+    <link rel="icon" type="image/png" href="/assets/app-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/style.css">
+    <style>
+        /* Seite fuer die Links aus den Firebase-Auth-Mails (Passwort zuruecksetzen,
+           E-Mail bestaetigen). Bewusst ohne lang.js: kein Sprach-Redirect, die
+           Sprache kommt aus dem Link-Parameter bzw. dem Browser. */
+        .action-card { max-width: 480px; margin: 0 auto; text-align: center; }
+        .action-card h1 { margin-bottom: 8px; }
+        .action-sub { color: var(--text-muted); margin: 0 0 24px; }
+        .action-icon { font-size: 3rem; line-height: 1; margin-bottom: 12px; }
+        .action-ok { color: var(--accent); }
+        .action-bad { color: var(--danger); }
+        .action-form { display: flex; flex-direction: column; gap: 12px; text-align: left; }
+        .action-form label { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); }
+        .action-input {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 10px;
+            border: 1px solid var(--border-strong);
+            background: var(--surface-2);
+            color: var(--text);
+            font-size: 1rem;
+            font-family: var(--font-body);
+        }
+        .action-input:focus { outline: none; border-color: var(--accent); }
+        .action-error { color: #ff8a80; font-family: var(--font-mono); font-size: 0.8rem; min-height: 1.2em; }
+        .action-actions { margin-top: 20px; display: flex; justify-content: center; }
+        .action-card [hidden] { display: none !important; }
+    </style>
+</head>
+<body>
+
+<nav class="topnav">
+    <div class="topnav-inner">
+        <a href="/index.html" class="brand">
+            <img src="/assets/app-icon.png" alt="Cruising Logo">
+            <span>CRUISING</span>
+        </a>
+    </div>
+</nav>
+
+<div class="wrap legal-page">
+    <div class="legal-card action-card">
+        <div id="state-loading">
+            <p class="action-sub" id="t-loading">&hellip;</p>
+        </div>
+
+        <div id="state-form" hidden>
+            <h1 id="t-reset-title"></h1>
+            <p class="action-sub" id="t-reset-for"></p>
+            <form class="action-form" id="reset-form" novalidate>
+                <label for="pw1" id="t-pw1"></label>
+                <input class="action-input" type="password" id="pw1" autocomplete="new-password">
+                <label for="pw2" id="t-pw2"></label>
+                <input class="action-input" type="password" id="pw2" autocomplete="new-password">
+                <div class="action-error" id="form-error" role="alert"></div>
+                <button class="btn btn-primary" type="submit" id="t-save"></button>
+            </form>
+        </div>
+
+        <div id="state-done" hidden>
+            <div class="action-icon action-ok">&#10003;</div>
+            <h1 id="done-title"></h1>
+            <p class="action-sub" id="done-text"></p>
+            <div class="action-actions"><a class="btn btn-ghost" href="/index.html" id="t-home-ok"></a></div>
+        </div>
+
+        <div id="state-error" hidden>
+            <div class="action-icon action-bad">&#10007;</div>
+            <h1 id="error-title"></h1>
+            <p class="action-sub" id="error-text"></p>
+            <div class="action-actions"><a class="btn btn-ghost" href="/index.html" id="t-home-err"></a></div>
+        </div>
+    </div>
+</div>
+
+<footer class="site-footer">
+    <div class="wrap">
+        <a href="/index.html">Cruising</a>
+        <a href="/datenschutz.html">Datenschutz / Privacy</a>
+        <a href="/impressum.html">Impressum</a>
+    </div>
+</footer>
+
+<script>
+(function () {
+    // Oeffentlicher Web-API-Schluessel des Firebase-Projekts (derselbe, der in
+    // jeder App steckt; schuetzt nichts, App Check und die Regeln tun das).
+    var API_KEY = 'AIzaSyDFiXqn0egtR8rEgFQ4JhmmD62-0hFhZls';
+    var BASE = 'https://identitytoolkit.googleapis.com/v1/accounts:';
+
+    var TEXTS = {
+        en: {
+            loading: 'One moment…',
+            resetTitle: 'Set a new password', resetFor: 'for %s',
+            pw1: 'New password', pw2: 'Repeat password', save: 'Save password',
+            pwShort: 'At least 6 characters.', pwMismatch: 'The passwords do not match.',
+            resetDone: 'New password saved', resetDoneText: 'You can now sign in to the Cruising app with your new password.',
+            verifyDone: 'Email address confirmed', verifyDoneText: 'Thank you! You can now continue in the Cruising app.',
+            errTitle: 'This link does not work', invalid: 'The link is invalid, expired or has already been used. Please request a new one in the app.',
+            incomplete: 'The link is incomplete. Please open it again from your email.',
+            unsupported: 'This link is not supported here.',
+            generic: 'Something went wrong. Please try again later.', home: 'To the website'
+        },
+        de: {
+            loading: 'Einen Moment…',
+            resetTitle: 'Neues Passwort festlegen', resetFor: 'für %s',
+            pw1: 'Neues Passwort', pw2: 'Passwort wiederholen', save: 'Passwort speichern',
+            pwShort: 'Mindestens 6 Zeichen.', pwMismatch: 'Die Passwörter stimmen nicht überein.',
+            resetDone: 'Neues Passwort gespeichert', resetDoneText: 'Du kannst dich jetzt mit deinem neuen Passwort in der Cruising-App anmelden.',
+            verifyDone: 'E-Mail-Adresse bestätigt', verifyDoneText: 'Danke! Du kannst jetzt in der Cruising-App weitermachen.',
+            errTitle: 'Dieser Link funktioniert nicht', invalid: 'Der Link ist ungültig, abgelaufen oder wurde schon verwendet. Fordere in der App einen neuen an.',
+            incomplete: 'Der Link ist unvollständig. Öffne ihn bitte noch einmal aus deiner E-Mail.',
+            unsupported: 'Dieser Link wird hier nicht unterstützt.',
+            generic: 'Etwas ist schiefgelaufen. Bitte versuche es später erneut.', home: 'Zur Website'
+        },
+        es: {
+            loading: 'Un momento…',
+            resetTitle: 'Establecer una nueva contraseña', resetFor: 'para %s',
+            pw1: 'Nueva contraseña', pw2: 'Repetir contraseña', save: 'Guardar contraseña',
+            pwShort: 'Mínimo 6 caracteres.', pwMismatch: 'Las contraseñas no coinciden.',
+            resetDone: 'Nueva contraseña guardada', resetDoneText: 'Ya puedes iniciar sesión en la app Cruising con tu nueva contraseña.',
+            verifyDone: 'Correo electrónico confirmado', verifyDoneText: '¡Gracias! Ya puedes continuar en la app Cruising.',
+            errTitle: 'Este enlace no funciona', invalid: 'El enlace no es válido, ha caducado o ya se ha usado. Solicita uno nuevo en la app.',
+            incomplete: 'El enlace está incompleto. Ábrelo de nuevo desde tu correo.',
+            unsupported: 'Este enlace no es compatible aquí.',
+            generic: 'Algo salió mal. Inténtalo de nuevo más tarde.', home: 'Al sitio web'
+        },
+        fr: {
+            loading: 'Un instant…',
+            resetTitle: 'Définir un nouveau mot de passe', resetFor: 'pour %s',
+            pw1: 'Nouveau mot de passe', pw2: 'Répéter le mot de passe', save: 'Enregistrer le mot de passe',
+            pwShort: '6 caractères minimum.', pwMismatch: 'Les mots de passe ne correspondent pas.',
+            resetDone: 'Nouveau mot de passe enregistré', resetDoneText: "Vous pouvez maintenant vous connecter à l'application Cruising avec votre nouveau mot de passe.",
+            verifyDone: 'Adresse e-mail confirmée', verifyDoneText: "Merci ! Vous pouvez continuer dans l'application Cruising.",
+            errTitle: 'Ce lien ne fonctionne pas', invalid: "Le lien est invalide, expiré ou déjà utilisé. Demandez-en un nouveau dans l'application.",
+            incomplete: 'Le lien est incomplet. Ouvrez-le à nouveau depuis votre e-mail.',
+            unsupported: "Ce lien n'est pas pris en charge ici.",
+            generic: "Une erreur s'est produite. Veuillez réessayer plus tard.", home: 'Vers le site web'
+        },
+        it: {
+            loading: 'Un momento…',
+            resetTitle: 'Imposta una nuova password', resetFor: 'per %s',
+            pw1: 'Nuova password', pw2: 'Ripeti la password', save: 'Salva password',
+            pwShort: 'Almeno 6 caratteri.', pwMismatch: 'Le password non coincidono.',
+            resetDone: 'Nuova password salvata', resetDoneText: "Ora puoi accedere all'app Cruising con la tua nuova password.",
+            verifyDone: 'Indirizzo e-mail confermato', verifyDoneText: "Grazie! Ora puoi continuare nell'app Cruising.",
+            errTitle: 'Questo link non funziona', invalid: "Il link non è valido, è scaduto o è già stato usato. Richiedine uno nuovo nell'app.",
+            incomplete: 'Il link è incompleto. Aprilo di nuovo dalla tua e-mail.',
+            unsupported: 'Questo link non è supportato qui.',
+            generic: 'Qualcosa è andato storto. Riprova più tardi.', home: 'Al sito web'
+        },
+        pl: {
+            loading: 'Chwileczkę…',
+            resetTitle: 'Ustaw nowe hasło', resetFor: 'dla %s',
+            pw1: 'Nowe hasło', pw2: 'Powtórz hasło', save: 'Zapisz hasło',
+            pwShort: 'Co najmniej 6 znaków.', pwMismatch: 'Hasła nie są takie same.',
+            resetDone: 'Nowe hasło zapisane', resetDoneText: 'Możesz teraz zalogować się do aplikacji Cruising nowym hasłem.',
+            verifyDone: 'Adres e-mail potwierdzony', verifyDoneText: 'Dziękujemy! Możesz teraz kontynuować w aplikacji Cruising.',
+            errTitle: 'Ten link nie działa', invalid: 'Link jest nieprawidłowy, wygasł lub został już użyty. Poproś o nowy w aplikacji.',
+            incomplete: 'Link jest niekompletny. Otwórz go ponownie z wiadomości e-mail.',
+            unsupported: 'Ten link nie jest tutaj obsługiwany.',
+            generic: 'Coś poszło nie tak. Spróbuj ponownie później.', home: 'Do strony internetowej'
+        }
+    };
+
+    var params = new URLSearchParams(window.location.search);
+    var mode = params.get('mode');
+    var code = params.get('oobCode');
+    var wanted = (params.get('lang') || navigator.language || 'en').toLowerCase().slice(0, 2);
+    var t = TEXTS[wanted] || TEXTS.en;
+    document.documentElement.lang = TEXTS[wanted] ? wanted : 'en';
+
+    function $(id) { return document.getElementById(id); }
+    function show(id) {
+        ['state-loading', 'state-form', 'state-done', 'state-error'].forEach(function (s) { $(s).hidden = (s !== id); });
+    }
+    function fail(text) {
+        $('error-title').textContent = t.errTitle;
+        $('error-text').textContent = text;
+        show('state-error');
+    }
+    function done(title, text) {
+        $('done-title').textContent = title;
+        $('done-text').textContent = text;
+        show('state-done');
+    }
+    function call(endpoint, body) {
+        return fetch(BASE + endpoint + '?key=' + API_KEY, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body)
+        }).then(function (res) {
+            return res.json().then(function (json) {
+                if (!res.ok) {
+                    var msg = (json && json.error && json.error.message) || 'UNKNOWN';
+                    var err = new Error(msg);
+                    err.code = msg;
+                    throw err;
+                }
+                return json;
+            });
+        });
+    }
+    function describe(err) {
+        var c = String(err && err.code || '');
+        if (c.indexOf('INVALID_OOB_CODE') === 0 || c.indexOf('EXPIRED_OOB_CODE') === 0) return t.invalid;
+        return t.generic;
+    }
+
+    $('t-loading').textContent = t.loading;
+    $('t-home-ok').textContent = t.home;
+    $('t-home-err').textContent = t.home;
+
+    if (!code) { fail(t.incomplete); return; }
+
+    if (mode === 'verifyEmail') {
+        call('update', { oobCode: code }).then(function () {
+            done(t.verifyDone, t.verifyDoneText);
+        }).catch(function (err) {
+            console.error('verifyEmail failed', err);
+            fail(describe(err));
+        });
+    } else if (mode === 'resetPassword') {
+        call('resetPassword', { oobCode: code }).then(function (info) {
+            $('t-reset-title').textContent = t.resetTitle;
+            $('t-reset-for').textContent = t.resetFor.replace('%s', info.email || '');
+            $('t-pw1').textContent = t.pw1;
+            $('t-pw2').textContent = t.pw2;
+            $('t-save').textContent = t.save;
+            show('state-form');
+            $('pw1').focus();
+        }).catch(function (err) {
+            console.error('resetPassword check failed', err);
+            fail(describe(err));
+        });
+
+        $('reset-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var p1 = $('pw1').value, p2 = $('pw2').value, errBox = $('form-error');
+            errBox.textContent = '';
+            if (p1.length < 6) { errBox.textContent = t.pwShort; return; }
+            if (p1 !== p2) { errBox.textContent = t.pwMismatch; return; }
+            var btn = $('t-save');
+            btn.disabled = true;
+            call('resetPassword', { oobCode: code, newPassword: p1 }).then(function () {
+                done(t.resetDone, t.resetDoneText);
+            }).catch(function (err) {
+                console.error('resetPassword confirm failed', err);
+                btn.disabled = false;
+                if (String(err.code).indexOf('WEAK_PASSWORD') === 0) { errBox.textContent = t.pwShort; return; }
+                errBox.textContent = describe(err);
+            });
+        });
+    } else {
+        fail(t.unsupported);
+    }
+})();
+</script>
+
+</body>
+</html>
