@@ -6,9 +6,6 @@
     <title>Privacy Policy | Cruising App</title>
     <link rel="icon" type="image/png" href="/assets/app-icon.png">
     <script src="/assets/lang.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
@@ -38,7 +35,7 @@
 <div class="wrap legal-page">
     <div class="legal-card">
         <h1>Privacy Policy</h1>
-        <span class="legal-stamp">Last updated: October 30, 2026</span>
+        <span class="legal-stamp">Last updated: November 11, 2026</span>
 
         <p>Thank you for your interest in our app "Cruising". Protecting your privacy is very important to us. Below we provide detailed information about how we handle your data.</p>
 
@@ -56,7 +53,7 @@
         <p>To provide the app's features, we process the following categories of data:</p>
 
         <h3>a) User Account Data</h3>
-        <p>When you register, we store your email address, a chosen display name, your profile picture, and your internal User ID.</p>
+        <p>When you register, we store your email address, a chosen display name, your profile picture, and your internal User ID. Your email address is used only for signing in and is not visible to other users. If you sign in with Google, Google passes the email address, name and profile picture of your Google account to our sign-in service; we do not copy any of these into your Cruising profile.</p>
 
         <h3>b) Vehicle Information (Virtual Garage)</h3>
         <p>We store information about the vehicles you add in the app (make, model, horsepower, year, drive type, photos). This data serves your personal statistics and is displayed to other users in your profile, unless you have restricted this.</p>
@@ -77,7 +74,7 @@
         <p>To show you unlockable achievements (milestones), we automatically evaluate derived metrics from your driving history, for example your number of drives, total distance driven, top speed, or the duration of individual drives. These metrics and the achievements themselves are stored on your profile. Your achievements and their progress are visible to other users of the app, like the rest of your profile.</p>
 
         <h3>e) Motion Sensors (Accelerometer, Gyroscope, Barometer)</h3>
-        <p>During Free Drives, we additionally evaluate your device's accelerometer and gyroscope to compute driving-style metrics (e.g. acceleration/braking behavior, number of corners, a rough "calm" or "dynamic" assessment) and to detect GPS inaccuracies while stationary. If your device has a barometer, we also use it to determine elevation gain more precisely than GPS alone. Only these computed metrics are stored, never raw sensor data. Unlike GPS, accessing these motion sensors does not require a separate permission.</p>
+        <p>During Free Drives, we additionally evaluate your device's accelerometer and gyroscope to compute driving-style metrics (e.g. acceleration/braking behavior, number of corners, a rough "calm" or "dynamic" assessment) and to detect GPS inaccuracies while stationary. If your device has a barometer, we also use it to determine elevation gain more precisely than GPS alone. Only these computed metrics and the lateral acceleration (g-force) curve derived from them during the drive are stored, never raw sensor data. Unlike GPS, accessing these motion sensors does not require a separate permission.</p>
 
         <h3>f) Exploration Map ("Where I've Been")</h3>
         <p>From the coordinates of all your recorded drives, navigations, and timed route runs, we automatically calculate which approximately 1×1 km map tiles you have already driven through. This overview is shown as your personal exploration map on the Map screen and in your recap, and is visible only to you.</p>
@@ -91,11 +88,14 @@
         <h3>i) Sign-up for the Android tests (website)</h3>
         <p>If you sign up for the Android tests on our website, we store your email address, the language of the page you visited and the time of your sign-up and consent. The sole purpose is to invite you to the Android tests and to contact you about them. The legal basis is your consent (Art. 6(1)(a) GDPR); providing it is voluntary and you can withdraw it at any time with effect for the future. The data is processed through our Firebase infrastructure at Google (see section 4 a); only we have access. To let you take part, we enter your address in Google Play, which requires it to be linked to a Google account. We delete your address once the tests have ended, or earlier if you withdraw your consent (informally via the contact address in section 10).</p>
 
+        <h3>j) Notifications (push)</h3>
+        <p>If you allow notifications on your device, we send you push messages about events in the app, for example friend requests, comments, invitations to group drives, a best time of yours being beaten, the approval of a route you created, or your monthly recap. For this purpose your device is registered with Firebase Cloud Messaging (Google) and receives a technical identifier. The messages contain only the details needed, such as the username of the user who triggered them and the name of the route or drive. You can turn notifications off at any time in your device settings.</p>
+
         <div class="legal-callout info">
             <h3>3. Location Data &amp; GPS (Core Feature)</h3>
             <p>The main function of the app is recording drives. For this purpose, we access your device's GPS sensors.</p>
             <p><strong>What is recorded?</strong> Latitude, longitude, altitude, speed, heading, and timestamp.</p>
-            <p><strong>When is it recorded?</strong> Recording only occurs when you actively record a drive (Circuit, Sprint, or "Free Drive") or center your position on the map. If you have enabled the optional Bluetooth auto-start, recording also starts automatically as soon as your phone connects to a device you selected (see 2 h); until you exceed 5 km/h, the location is only read to detect movement and nothing is saved.</p>
+            <p><strong>When is it recorded?</strong> Recording only occurs when you actively record a drive (Circuit, Sprint, or "Free Drive") or center your position on the map. If you have enabled the optional Bluetooth auto-start, recording also starts automatically as soon as your phone connects to a device you selected (see 2 h); until you exceed 5 km/h, the location is only read to detect movement and nothing is saved. While a recording is running, your location is also collected when the screen is off or the app is in the background; a persistent notification indicates this. Without a running recording we do not collect your location in the background.</p>
             <p style="margin-bottom:0;"><strong>For what purpose?</strong> To measure your driving time, verify checkpoints, create speed diagrams (telemetry), and, in the "Free Drive" function, to record the entire distance you have covered. This precise route data is stored on our servers, provided you actively choose to save it at the end of the drive.</p>
         </div>
 
@@ -109,17 +109,27 @@
             <li><strong>Cloud Firestore:</strong> Our database stores your profile, your garage, routes, times, and drives.</li>
             <li><strong>Firebase Cloud Storage:</strong> Used to securely store images uploaded by you (profile pictures, car photos).</li>
             <li><strong>Firebase Crashlytics:</strong> Collects anonymized technical crash and error reports (e.g., device model, app version, error message) to improve app stability. No user ID is transmitted.</li>
+            <li><strong>Firebase Realtime Database:</strong> Transmits your live location to your friends while sharing is switched on (see 2 g).</li>
+            <li><strong>Firebase Cloud Messaging:</strong> Delivers push notifications (see 2 j).</li>
+            <li><strong>Cloud Functions:</strong> Runs server-side processes, for example sending notifications and cleaning up after an account deletion. Some of these processes run on servers in the USA; for this Google relies on the EU-US Data Privacy Framework or the EU Standard Contractual Clauses.</li>
+            <li><strong>Firebase App Check (Play Integrity):</strong> Checks whether requests come from the unmodified app on a genuine device, in order to protect our servers against abuse. In doing so, Google processes information about the integrity of the device and the app.</li>
+            <li><strong>Firebase Performance Monitoring:</strong> Measures technical performance data, for example the app's start-up time and the duration of network requests, together with device model, operating system version and app version. The data is not linked to any user account.</li>
         </ul>
-        <p>The data is preferably stored on servers in the EU (e.g., Frankfurt), but may be distributed internationally within the Google Cloud infrastructure due to technical reasons. Google Privacy Policy: <a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a></p>
+        <p>The data is preferably stored on servers in the EU, but may be distributed internationally within the Google Cloud infrastructure due to technical reasons. Google Privacy Policy: <a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a></p>
+        <p>For the place search in the filters and for displaying place names, the app also uses the geocoding service of your Android device, which is provided by Google. The place name you enter, or a coordinate, is transmitted to Google in the process.</p>
 
         <h3>b) Mapbox (Maps &amp; Navigation)</h3>
         <p>For the visual representation of maps, routes, and navigation, we use the Mapbox API (Mapbox, Inc., 740 15th Street NW, 5th Floor, Washington DC 20005, USA). When you open the map in the app, a direct connection to Mapbox's servers is established. For technical reasons, your IP address and location data are transmitted to Mapbox to load the map material onto your device. As Mapbox is a US company, this may involve a transfer of your data to the USA. This transfer relies on the EU Standard Contractual Clauses or, where certified, the EU-US Data Privacy Framework, to ensure an adequate level of data protection. Mapbox Privacy Policy: <a href="https://www.mapbox.com/legal/privacy" target="_blank">https://www.mapbox.com/legal/privacy</a></p>
+        <p>Specifically, Mapbox receives: the map section currently displayed, the start, destination and waypoints when a route is calculated (including when a GPX file is imported), and your search input when you search for places and addresses. The Mapbox map SDK also collects anonymized usage data; you can turn this off via the info icon on the map.</p>
 
         <h3>c) Open-Meteo (Weather Data)</h3>
         <p>To display current weather information and a forecast, we query the Open-Meteo weather API. Only the coordinates of the relevant location are transmitted - no user identifier, no other personal data. The service is used anonymously, without an API key. More information: <a href="https://open-meteo.com/en/terms" target="_blank">https://open-meteo.com/en/terms</a></p>
 
         <h3>d) GitHub / jsDelivr (Brand Logos)</h3>
         <p>If you have set a brand for a vehicle in your garage, we load the matching manufacturer logo once from a public, free delivery service (jsDelivr, which serves content hosted on GitHub) and then store it permanently on your device. For technical reasons, your IP address is transmitted to jsDelivr, but no other personal data. The logos themselves are trademarks of their respective vehicle manufacturers.</p>
+
+        <h3>e) Website cruising-app.de</h3>
+        <p>Our website is served via GitHub Pages (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA). When you visit it, GitHub processes your IP address and the usual access data (time, page requested, browser) for technical reasons, in order to deliver the page and keep the service secure. This may involve a transfer to the USA, which is based on the EU-US Data Privacy Framework or the EU Standard Contractual Clauses. The website uses no cookies and no tracking; fonts and scripts are loaded directly from cruising-app.de. Only your language choice is stored locally in your browser. If you confirm your email address or reset your password via a link from our emails, this is handled by Firebase Authentication (see a). GitHub's privacy statement: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank">https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement</a></p>
 
         <h2>5. Visibility of Your Data</h2>
         <p>You control who sees your data:</p>
@@ -133,10 +143,10 @@
         </ul>
 
         <h2>6. Legal Basis</h2>
-        <p>Processing is carried out in accordance with <strong>Art. 6(1)(b) GDPR</strong> (performance of a contract to provide app features) and <strong>Art. 6(1)(f) GDPR</strong> (legitimate interest in security checks, fraud prevention, and community features).</p>
+        <p>Processing is carried out in accordance with <strong>Art. 6(1)(b) GDPR</strong> (performance of a contract to provide app features) and <strong>Art. 6(1)(f) GDPR</strong> (legitimate interest in security checks, fraud prevention, and community features). We process technical error and performance data as well as the integrity check (see section 4 a) on the basis of our legitimate interest in a stable and secure app (Art. 6(1)(f) GDPR). You only receive push notifications if you have allowed them on your device.</p>
 
         <h2>7. Data Sharing</h2>
-        <p>Data is only shared with third parties if this is technically necessary (Google Firebase / Mapbox) or if we are legally obliged to do so (e.g., law enforcement in case of suspicion of illegal racing according to § 315d StGB).</p>
+        <p>Data is only shared with third parties if this is technically necessary (to the services named in section 4) or if we are legally obliged to do so (e.g., law enforcement in case of suspicion of illegal racing according to § 315d StGB).</p>
 
         <h2>8. Deletion and Archiving (Important)</h2>
         <p>You can delete your account at any time in the settings ("Delete Account").</p>

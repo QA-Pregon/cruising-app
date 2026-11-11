@@ -6,9 +6,6 @@
     <title>Política de Privacidad | Cruising App</title>
     <link rel="icon" type="image/png" href="/assets/app-icon.png">
     <script src="/assets/lang.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
@@ -38,7 +35,7 @@
 <div class="wrap legal-page">
     <div class="legal-card">
         <h1>Política de Privacidad</h1>
-        <span class="legal-stamp">Última actualización: 30 de octubre de 2026</span>
+        <span class="legal-stamp">Última actualización: 11 de noviembre de 2026</span>
 
         <p>Gracias por tu interés en nuestra aplicación "Cruising". La protección de tu privacidad es muy importante para nosotros. A continuación te informamos detalladamente sobre cómo tratamos tus datos.</p>
 
@@ -56,7 +53,7 @@
         <p>Para proporcionar las funciones de la aplicación, procesamos las siguientes categorías de datos:</p>
 
         <h3>a) Datos de la cuenta de usuario</h3>
-        <p>Al registrarte, almacenamos tu dirección de correo electrónico, un nombre de usuario elegido (Nombre para mostrar), tu foto de perfil y tu ID de usuario interno.</p>
+        <p>Al registrarte, almacenamos tu dirección de correo electrónico, un nombre de usuario elegido (Nombre para mostrar), tu foto de perfil y tu ID de usuario interno. La dirección de correo electrónico se utiliza únicamente para iniciar sesión y no es visible para otros usuarios. Al iniciar sesión con Google, Google transmite a nuestro servicio de inicio de sesión la dirección de correo electrónico, el nombre y la foto de perfil de la cuenta de Google; no copiamos ninguno de estos datos al perfil de Cruising.</p>
 
         <h3>b) Información del vehículo (Garaje virtual)</h3>
         <p>Almacenamos información sobre los vehículos que añades en la aplicación (marca, modelo, potencia, año, tipo de tracción, fotos). Estos datos sirven para tus estadísticas personales y se muestran a otros usuarios en tu perfil, a menos que lo hayas restringido.</p>
@@ -77,7 +74,7 @@
         <p>Para mostrarte logros desbloqueables (hitos), evaluamos automáticamente indicadores derivados de tu historial de conducción, por ejemplo tu número de viajes, los kilómetros totales recorridos, tu velocidad máxima o la duración de viajes individuales. Estos indicadores, así como los logros desbloqueados, se almacenan en tu perfil. Tus logros y su progreso son visibles para otros usuarios de la app, igual que el resto de tu perfil.</p>
 
         <h3>e) Sensores de movimiento (Acelerómetro, giroscopio, barómetro)</h3>
-        <p>Durante las Conducciones libres, evaluamos adicionalmente el acelerómetro y el giroscopio de tu dispositivo para calcular indicadores de estilo de conducción (por ejemplo, comportamiento de aceleración/frenado, número de curvas, una valoración aproximada de "tranquilo" o "dinámico") y para detectar imprecisiones del GPS en parado. Si tu dispositivo dispone de un barómetro, lo utilizamos además para determinar el desnivel recorrido con mayor precisión que solo con GPS. Solo se almacenan estos indicadores calculados, nunca los datos brutos de los sensores. A diferencia del GPS, el acceso a estos sensores de movimiento no requiere un permiso independiente.</p>
+        <p>Durante las Conducciones libres, evaluamos adicionalmente el acelerómetro y el giroscopio de tu dispositivo para calcular indicadores de estilo de conducción (por ejemplo, comportamiento de aceleración/frenado, número de curvas, una valoración aproximada de "tranquilo" o "dinámico") y para detectar imprecisiones del GPS en parado. Si tu dispositivo dispone de un barómetro, lo utilizamos además para determinar el desnivel recorrido con mayor precisión que solo con GPS. Solo se almacenan estos indicadores calculados y la curva de aceleración lateral (fuerzas G) derivada de ellos durante el viaje, nunca los datos brutos de los sensores. A diferencia del GPS, el acceso a estos sensores de movimiento no requiere un permiso independiente.</p>
 
         <h3>f) Mapa de exploración ("Dónde he estado")</h3>
         <p>A partir de las coordenadas de todos tus viajes, navegaciones y rutas con toma de tiempo registrados, calculamos automáticamente qué casillas del mapa de aproximadamente 1×1 km ya has recorrido. Esta visión general se muestra como tu mapa de exploración personal en el mapa y en tu resumen, y es visible únicamente para ti.</p>
@@ -91,11 +88,14 @@
         <h3>i) Inscripción en las pruebas de Android (sitio web)</h3>
         <p>Si te inscribes en las pruebas de Android en nuestro sitio web, guardamos tu dirección de correo electrónico, el idioma de la página visitada y el momento de tu inscripción y consentimiento. La única finalidad es invitarte a las pruebas de Android y ponernos en contacto contigo al respecto. La base jurídica es tu consentimiento (art. 6, apdo. 1, letra a del RGPD); es voluntario y puedes retirarlo en cualquier momento con efecto para el futuro. Los datos se tratan a través de nuestra infraestructura de Firebase en Google (véase el punto 4 a); solo nosotros tenemos acceso. Para que puedas participar, introducimos tu dirección en Google Play, lo que exige que esté vinculada a una cuenta de Google. Eliminamos tu dirección cuando terminen las pruebas, o antes si retiras tu consentimiento (sin formalidades, a través de la dirección de contacto del punto 10).</p>
 
+        <h3>j) Notificaciones (push)</h3>
+        <p>Si las notificaciones están permitidas en el dispositivo, enviamos mensajes push sobre eventos de la aplicación, por ejemplo solicitudes de amistad, comentarios, invitaciones a salidas en grupo, un mejor tiempo superado, la aprobación de una ruta creada o el resumen mensual. Para ello, el dispositivo se registra en Firebase Cloud Messaging (Google) y recibe un identificador técnico. Los mensajes contienen solo los datos necesarios, como el nombre de usuario de quien los origina y el nombre de la ruta o de la salida. Las notificaciones pueden desactivarse en cualquier momento en los ajustes del dispositivo.</p>
+
         <div class="legal-callout info">
             <h3>3. Datos de ubicación y GPS (Función principal)</h3>
             <p>La función principal de la aplicación es registrar los viajes. Para ello, accedemos a los sensores GPS de tu dispositivo.</p>
             <p><strong>¿Qué se registra?</strong> Latitud, longitud, altitud, velocidad, rumbo y marca de tiempo.</p>
-            <p><strong>¿Cuándo se registra?</strong> El registro solo ocurre cuando grabas activamente un viaje (Circuito, Sprint o "Conducción libre") o centras tu posición en el mapa. Si has activado el inicio automático por Bluetooth opcional, la grabación también empieza automáticamente en cuanto tu móvil se conecta a un dispositivo que hayas elegido (véase 2 h); hasta que superes los 5 km/h, la ubicación solo se lee para detectar el movimiento y no se guarda nada.</p>
+            <p><strong>¿Cuándo se registra?</strong> El registro solo ocurre cuando grabas activamente un viaje (Circuito, Sprint o "Conducción libre") o centras tu posición en el mapa. Si has activado el inicio automático por Bluetooth opcional, la grabación también empieza automáticamente en cuanto tu móvil se conecta a un dispositivo que hayas elegido (véase 2 h); hasta que superes los 5 km/h, la ubicación solo se lee para detectar el movimiento y no se guarda nada. Mientras hay una grabación en curso, la ubicación también se registra con la pantalla apagada o con la aplicación en segundo plano; una notificación permanente lo indica. Sin una grabación en curso no registramos la ubicación en segundo plano.</p>
             <p style="margin-bottom:0;"><strong>¿Para qué?</strong> Para medir tu tiempo de conducción, verificar puntos de control, crear diagramas de velocidad (telemetría) y, en la función "Conducción libre", registrar toda la distancia recorrida. Estos datos precisos de la ruta se almacenan en nuestros servidores, siempre que decidas guardarlos activamente al final del viaje.</p>
         </div>
 
@@ -109,17 +109,27 @@
             <li><strong>Cloud Firestore:</strong> Nuestra base de datos almacena tu perfil, tu garaje, rutas, tiempos y excursiones.</li>
             <li><strong>Firebase Cloud Storage:</strong> Se utiliza para almacenar de forma segura las imágenes que subas (fotos de perfil, fotos de coches).</li>
             <li><strong>Firebase Crashlytics:</strong> Recopila informes técnicos anonimizados de fallos y errores (p. ej., modelo de dispositivo, versión de la app, mensaje de error) para mejorar la estabilidad. No se transmite ningún ID de usuario.</li>
+            <li><strong>Firebase Realtime Database:</strong> Transmite la ubicación en vivo a los amigos mientras la función de compartir está activada (véase 2 g).</li>
+            <li><strong>Firebase Cloud Messaging:</strong> Entrega las notificaciones push (véase 2 j).</li>
+            <li><strong>Cloud Functions:</strong> Ejecuta procesos en el servidor, por ejemplo el envío de notificaciones y la limpieza tras la eliminación de una cuenta. Parte de estos procesos se ejecuta en servidores de EE. UU.; para ello Google se basa en el Marco de Privacidad de Datos UE-EE. UU. o en las cláusulas contractuales tipo de la UE.</li>
+            <li><strong>Firebase App Check (Play Integrity):</strong> Comprueba si las solicitudes proceden de la aplicación sin modificar en un dispositivo auténtico, para proteger nuestros servidores frente a abusos. Para ello, Google trata información sobre la integridad del dispositivo y de la aplicación.</li>
+            <li><strong>Firebase Performance Monitoring:</strong> Mide datos técnicos de rendimiento, por ejemplo el tiempo de inicio de la aplicación y la duración de las solicitudes de red, junto con el modelo del dispositivo y las versiones del sistema operativo y de la aplicación. Los datos no están vinculados a ninguna cuenta de usuario.</li>
         </ul>
         <p>Los datos se almacenan preferiblemente en servidores de la UE (p. ej., Fráncfort), pero por razones técnicas pueden distribuirse internacionalmente dentro de la infraestructura de Google Cloud. Política de privacidad de Google: <a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a></p>
+        <p>Para la búsqueda de lugares en los filtros y para mostrar nombres de lugares, la aplicación utiliza además el servicio de geocodificación del dispositivo Android, proporcionado por Google. Para ello se transmite a Google el nombre del lugar introducido o una coordenada.</p>
 
         <h3>b) Mapbox (Material cartográfico y navegación)</h3>
         <p>Para la representación visual de mapas, rutas y navegación, utilizamos la API de Mapbox (Mapbox, Inc., 740 15th Street NW, 5th Floor, Washington DC 20005, EE. UU.). Cuando abres el mapa en la aplicación, se establece una conexión directa con los servidores de Mapbox. Por razones técnicas, tu dirección IP y tus datos de ubicación se transmiten a Mapbox para cargar el material del mapa en tu dispositivo. Como Mapbox es una empresa estadounidense, esto puede implicar una transferencia de tus datos a EE. UU. Dicha transferencia se basa en las Cláusulas Contractuales Tipo de la UE o, si está certificada, en el Marco de Privacidad de Datos UE-EE. UU., para garantizar un nivel adecuado de protección de datos. Política de privacidad de Mapbox: <a href="https://www.mapbox.com/legal/privacy" target="_blank">https://www.mapbox.com/legal/privacy</a></p>
+        <p>En concreto, Mapbox recibe: la sección del mapa que se muestra en cada momento, el origen, el destino y los puntos intermedios al calcular una ruta (también al importar un archivo GPX) y el texto introducido en la búsqueda de lugares y direcciones. El SDK de mapas de Mapbox recopila además datos de uso anonimizados; esto puede desactivarse mediante el icono de información del mapa.</p>
 
         <h3>c) Open-Meteo (Datos meteorológicos)</h3>
         <p>Para mostrar información meteorológica actual y una previsión, consultamos la API meteorológica de Open-Meteo. Solo se transmiten las coordenadas del lugar correspondiente, sin identificador de usuario ni ningún otro dato personal. El servicio se utiliza de forma anónima, sin clave API. Más información: <a href="https://open-meteo.com/en/terms" target="_blank">https://open-meteo.com/en/terms</a></p>
 
         <h3>d) GitHub / jsDelivr (Logotipos de marca)</h3>
         <p>Si has indicado una marca para un vehículo en tu garaje, cargamos una única vez el logotipo del fabricante correspondiente desde un servicio de entrega público y gratuito (jsDelivr, que distribuye contenido alojado en GitHub) y lo almacenamos después de forma permanente en tu dispositivo. Por razones técnicas, tu dirección IP se transmite a jsDelivr, pero ningún otro dato personal. Los logotipos en sí son marcas registradas de los respectivos fabricantes de vehículos.</p>
+
+        <h3>e) Sitio web cruising-app.de</h3>
+        <p>Nuestro sitio web se sirve a través de GitHub Pages (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, EE. UU.). Al visitarlo, GitHub trata por motivos técnicos la dirección IP y los datos de acceso habituales (hora, página solicitada, navegador) para entregar la página y garantizar la seguridad del servicio. Esto puede implicar una transferencia a EE. UU., que se basa en el Marco de Privacidad de Datos UE-EE. UU. o en las cláusulas contractuales tipo de la UE. El sitio web no utiliza cookies ni seguimiento; las fuentes y los scripts se cargan directamente desde cruising-app.de. Solo la elección de idioma se guarda localmente en el navegador. La confirmación de la dirección de correo electrónico o el restablecimiento de la contraseña mediante un enlace de nuestros correos se gestiona a través de Firebase Authentication (véase a). Declaración de privacidad de GitHub: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank">https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement</a></p>
 
         <h2>5. Visibilidad de tus datos</h2>
         <p>Tú controlas quién ve tus datos:</p>
@@ -133,10 +143,10 @@
         </ul>
 
         <h2>6. Base legal</h2>
-        <p>El procesamiento se realiza de conformidad con el <strong>Art. 6 (1) lit. b del RGPD</strong> (cumplimiento de un contrato para proporcionar funciones de la aplicación) y el <strong>Art. 6 (1) lit. f del RGPD</strong> (interés legítimo en el control de seguridad, prevención del fraude y funciones de la comunidad).</p>
+        <p>El procesamiento se realiza de conformidad con el <strong>Art. 6 (1) lit. b del RGPD</strong> (cumplimiento de un contrato para proporcionar funciones de la aplicación) y el <strong>Art. 6 (1) lit. f del RGPD</strong> (interés legítimo en el control de seguridad, prevención del fraude y funciones de la comunidad). Tratamos los datos técnicos de errores y rendimiento, así como la comprobación de integridad (véase el punto 4 a), sobre la base de nuestro interés legítimo en una aplicación estable y segura (art. 6, apdo. 1, letra f del RGPD). Las notificaciones push solo se envían si están permitidas en el dispositivo.</p>
 
         <h2>7. Intercambio de datos</h2>
-        <p>La transmisión a terceros solo se produce si es técnicamente necesario (Google Firebase / Mapbox) o si estamos obligados a hacerlo por ley (por ejemplo, aplicación de la ley en caso de sospecha de carreras ilegales según el § 315d StGB de Alemania).</p>
+        <p>La transmisión a terceros solo se produce si es técnicamente necesario (a los servicios indicados en el punto 4) o si estamos obligados a hacerlo por ley (por ejemplo, aplicación de la ley en caso de sospecha de carreras ilegales según el § 315d StGB de Alemania).</p>
 
         <h2>8. Eliminación y archivo (Importante)</h2>
         <p>Puedes eliminar tu cuenta en cualquier momento en la configuración ("Eliminar cuenta").</p>
